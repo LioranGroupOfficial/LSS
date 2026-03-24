@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+:root {
+  --page-bg: #f6f2ea;
+  --surface: rgba(255, 252, 247, 0.84);
+  --surface-muted: rgba(244, 237, 225, 0.76);
+  --panel: rgba(255, 248, 239, 0.94);
+  --text-main: #1f2824;
+  --text-soft: #56665f;
+  --text-muted: #74847d;
+  --border-soft: rgba(42, 67, 57, 0.09);
+  --border-strong: rgba(42, 67, 57, 0.16);
+  --accent: #0d8d7c;
+  --accent-contrast: #effcf8;
+  --accent-fade: rgba(13, 141, 124, 0.14);
+  --hero-glow: rgba(248, 177, 89, 0.16);
+  --shadow-soft: rgba(41, 54, 48, 0.1);
+}
+
+@theme inline {
+  --color-background: var(--page-bg);
+  --color-foreground: var(--text-main);
+  --font-sans: "Segoe UI Variable", "Aptos", "Trebuchet MS", sans-serif;
+  --font-display: "Arial Narrow", "Bahnschrift", "Franklin Gothic Medium", sans-serif;
+}
+
+:root[data-theme="dark"] {
+  --page-bg: #0c1414;
+  --surface: rgba(13, 23, 23, 0.84);
+  --surface-muted: rgba(18, 31, 31, 0.92);
+  --panel: rgba(16, 29, 29, 0.96);
+  --text-main: #edf4ef;
+  --text-soft: #b0c0b7;
+  --text-muted: #7f948b;
+  --border-soft: rgba(200, 228, 216, 0.09);
+  --border-strong: rgba(200, 228, 216, 0.16);
+  --accent: #58d0bb;
+  --accent-contrast: #052b25;
+  --accent-fade: rgba(88, 208, 187, 0.14);
+  --hero-glow: rgba(18, 90, 78, 0.34);
+  --shadow-soft: rgba(0, 0, 0, 0.28);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page-bg: #0c1414;
+    --surface: rgba(13, 23, 23, 0.84);
+    --surface-muted: rgba(18, 31, 31, 0.92);
+    --panel: rgba(16, 29, 29, 0.96);
+    --text-main: #edf4ef;
+    --text-soft: #b0c0b7;
+    --text-muted: #7f948b;
+    --border-soft: rgba(200, 228, 216, 0.09);
+    --border-strong: rgba(200, 228, 216, 0.16);
+    --accent: #58d0bb;
+    --accent-contrast: #052b25;
+    --accent-fade: rgba(88, 208, 187, 0.14);
+    --hero-glow: rgba(18, 90, 78, 0.34);
+    --shadow-soft: rgba(0, 0, 0, 0.28);
+  }
+}
+
+html {
+  background: var(--page-bg);
+}
+
+body {
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.32), transparent 30%),
+    var(--page-bg);
+  color: var(--text-main);
+  font-family: "Segoe UI Variable", "Aptos", "Trebuchet MS", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Arial Narrow", "Bahnschrift", "Franklin Gothic Medium", sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
