@@ -1,36 +1,138 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lioran Software Solutions Website
 
-## Getting Started
+Official marketing website for Lioran Software Solutions (LSS), built with Next.js 16, React 19, Tailwind CSS 4, and MongoDB.
 
-First, run the development server:
+This project presents LSS as a full-stack software agency under Lioran Group, with:
+
+- a branded landing page for services and positioning
+- dark/light theme support with local persistence
+- SEO metadata for production use
+- a functional contact form backed by MongoDB
+
+## Tech Stack
+
+- Next.js 16 App Router
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- MongoDB Node driver
+- ESLint
+
+## Features
+
+- One-page agency website for `lioransolutions.com`
+- Default dark theme with manual toggle
+- Theme preference stored in `localStorage` as `lss-theme`
+- Structured sections for services, pricing, support plans, roadmap, and contact
+- Contact form that submits to `/api/contact`
+- MongoDB persistence for lead capture
+
+## Project Structure
+
+```text
+app/
+  api/contact/route.ts        Contact form API endpoint
+  components/contact-form.tsx Contact form UI and submit logic
+  components/theme-toggle.tsx Theme toggle with hydration-safe state
+  globals.css                 Global styling and theme tokens
+  layout.tsx                  Root layout and metadata
+  page.tsx                    Main landing page
+
+lib/
+  mongodb.ts                  Shared MongoDB connection helper
+
+public/
+  ...                         Static assets
+```
+
+## Environment Variables
+
+Create a `.env` file in the project root:
+
+```env
+MONGODB_URI=your_mongodb_connection_string
+```
+
+The app expects the connection string to point to the `lss` database, or another database you want to use for storing contact submissions.
+
+## Installation
+
+```bash
+npm install
+```
+
+## Local Development
+
+Run the dev server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev
+npm run build
+npm run start
+npm run lint
+```
 
-## Learn More
+## Contact Form Backend
 
-To learn more about Next.js, take a look at the following resources:
+The contact form sends a `POST` request to:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```text
+/api/contact
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Submitted records are stored in the `contact_submissions` collection with fields like:
 
-## Deploy on Vercel
+- `name`
+- `email`
+- `company`
+- `budget`
+- `service`
+- `recipient`
+- `message`
+- `createdAt`
+- `source`
+- `status`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- The site defaults to dark mode.
+- If a visitor changes the theme, the selection is saved locally and reused on the next visit.
+- The API validates required fields and email format before writing to MongoDB.
+
+## Deployment
+
+Before deploying, make sure:
+
+1. `MONGODB_URI` is configured in your hosting environment.
+2. The MongoDB cluster allows connections from your deployment environment.
+3. `npm run lint` passes.
+4. `npm run build` completes successfully in your deployment environment.
+
+## Brand Context
+
+Lioran Software Solutions focuses on:
+
+- custom website development
+- backend and frontend engineering
+- database architecture
+- DevOps and deployment
+- hosting and infrastructure management
+- maintenance and technical support
+
+Minimum project engagement: `₹10,000`
+
+## Domain and Contact
+
+- Domain: `lioransolutions.com`
+- Email: `cto@lioransolutions.com`
+- Email: `ceo@lioransolutions.com`
+- Email: `contact@lioransolutions.com`
+- Email: `info@lioransolutions.com`

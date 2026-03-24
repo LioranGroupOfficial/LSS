@@ -39,7 +39,11 @@ function subscribe(callback: () => void) {
 }
 
 export function ThemeToggle() {
-  const theme = useSyncExternalStore(subscribe, getPreferredTheme, () => "dark");
+  const theme = useSyncExternalStore<Theme>(
+    subscribe,
+    getPreferredTheme,
+    () => "dark",
+  );
 
   useEffect(() => {
     applyTheme(theme);
