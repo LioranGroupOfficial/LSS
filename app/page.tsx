@@ -1,5 +1,5 @@
 import { ContactForm } from "./components/contact-form";
-import { ThemeToggle } from "./components/theme-toggle";
+import { SiteHeader } from "./components/site-header";
 
 const serviceGroups = [
   "Custom website development",
@@ -83,46 +83,7 @@ export default function Home() {
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[44rem] bg-[radial-gradient(circle_at_top_left,_rgba(12,142,124,0.28),transparent_42%),radial-gradient(circle_at_top_right,_rgba(247,148,29,0.18),transparent_35%),linear-gradient(180deg,var(--hero-glow),transparent_72%)]" />
 
       <div className="mx-auto flex w-full max-w-7xl flex-col px-5 pb-16 pt-5 sm:px-8 lg:px-10">
-        <header className="sticky top-4 z-20 mb-8">
-          <div className="mx-auto flex max-w-6xl items-center justify-between rounded-full border border-[var(--border-strong)] bg-[var(--surface)]/85 px-4 py-3 shadow-[0_12px_40px_var(--shadow-soft)] backdrop-blur">
-            <a href="#top" className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-4xl bg-[var(--accent)] text-sm font-black uppercase tracking-[0.32em] text-[var(--accent-contrast)]">
-                LSS
-              </div>
-              <div>
-                <p className="text-sm font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase">
-                  Lioran Group
-                </p>
-                <p className="text-base font-semibold">Lioran Software Solutions</p>
-              </div>
-            </a>
-
-            <div className="hidden items-center gap-6 text-sm font-medium text-[var(--text-soft)] md:flex">
-              <a href="#services" className="transition hover:text-[var(--text-main)]">
-                Services
-              </a>
-              <a href="#pricing" className="transition hover:text-[var(--text-main)]">
-                Pricing
-              </a>
-              <a href="#support" className="transition hover:text-[var(--text-main)]">
-                Support
-              </a>
-              <a href="#contact" className="transition hover:text-[var(--text-main)]">
-                Contact
-              </a>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <ThemeToggle />
-              <a
-                href="#contact"
-                className="rounded-full bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-[var(--accent-contrast)] transition hover:translate-y-[-1px] hover:shadow-[0_10px_24px_rgba(10,120,106,0.28)]"
-              >
-                Start a Project
-              </a>
-            </div>
-          </div>
-        </header>
+        <SiteHeader />
 
         <section
           id="top"
