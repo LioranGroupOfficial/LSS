@@ -51,12 +51,19 @@ export const metadata: Metadata = {
     siteName: "Lioran Software Solutions",
     type: "website",
     locale: "en_US",
+    images: [
+      {
+        url: "/LSS-smp.png",
+        alt: "Lioran Software Solutions",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lioran Software Solutions",
     description:
       "Custom websites, full-stack systems, hosting, deployment, and ongoing maintenance by Lioran Software Solutions.",
+    images: ["/LSS-smp.png"],
   },
   icons: {
     icon: "/favicon.ico",
