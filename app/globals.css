@@ -1,44 +1,42 @@
 @import "tailwindcss";
 
 :root {
-  --page-bg: #0c1414;
-  --surface: rgba(13, 23, 23, 0.84);
-  --surface-muted: rgba(18, 31, 31, 0.92);
-  --panel: rgba(16, 29, 29, 0.96);
-  --text-main: #edf4ef;
-  --text-soft: #b0c0b7;
-  --text-muted: #7f948b;
-  --border-soft: rgba(200, 228, 216, 0.09);
-  --border-strong: rgba(200, 228, 216, 0.16);
-  --accent: #58d0bb;
-  --accent-contrast: #052b25;
-  --accent-fade: rgba(88, 208, 187, 0.14);
-  --hero-glow: rgba(18, 90, 78, 0.34);
-  --shadow-soft: rgba(0, 0, 0, 0.28);
+  --page-bg: #000000;
+  --surface: rgba(20, 20, 20, 0.95);
+  --surface-muted: rgba(30, 30, 30, 0.9);
+  --panel: rgba(25, 25, 25, 0.98);
+  --text-main: #e8e8e8;
+  --text-soft: #a8a8a8;
+  --text-muted: #707070;
+  --border-soft: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.15);
+  --accent: #3b82f6;
+  --accent-contrast: #ffffff;
+  --accent-fade: rgba(59, 130, 246, 0.1);
+  --shadow-soft: rgba(0, 0, 0, 0.4);
 }
 
 @theme inline {
   --color-background: var(--page-bg);
   --color-foreground: var(--text-main);
-  --font-sans: "Segoe UI Variable", "Aptos", "Trebuchet MS", sans-serif;
-  --font-display: "Arial Narrow", "Bahnschrift", "Franklin Gothic Medium", sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
 }
 
 :root[data-theme="light"] {
-  --page-bg: #f6f2ea;
-  --surface: rgba(255, 252, 247, 0.84);
-  --surface-muted: rgba(244, 237, 225, 0.76);
-  --panel: rgba(255, 248, 239, 0.94);
-  --text-main: #1f2824;
-  --text-soft: #56665f;
-  --text-muted: #74847d;
-  --border-soft: rgba(42, 67, 57, 0.09);
-  --border-strong: rgba(42, 67, 57, 0.16);
-  --accent: #0d8d7c;
-  --accent-contrast: #effcf8;
-  --accent-fade: rgba(13, 141, 124, 0.14);
-  --hero-glow: rgba(248, 177, 89, 0.16);
-  --shadow-soft: rgba(41, 54, 48, 0.1);
+  --page-bg: #f8f8f8;
+  --surface: rgba(255, 255, 255, 0.92);
+  --surface-muted: rgba(244, 244, 244, 0.88);
+  --panel: rgba(250, 250, 250, 0.96);
+  --text-main: #1a1a1a;
+  --text-soft: #4a4a4a;
+  --text-muted: #707070;
+  --border-soft: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.15);
+  --accent: #2563eb;
+  --accent-contrast: #ffffff;
+  --accent-fade: rgba(37, 99, 235, 0.08);
+  --shadow-soft: rgba(0, 0, 0, 0.08);
 }
 
 html {
@@ -46,11 +44,9 @@ html {
 }
 
 body {
-  background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.32), transparent 30%),
-    var(--page-bg);
+  background: var(--page-bg);
   color: var(--text-main);
-  font-family: "Segoe UI Variable", "Aptos", "Trebuchet MS", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
 }
 
 h1,
@@ -59,7 +55,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Arial Narrow", "Bahnschrift", "Franklin Gothic Medium", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  font-weight: 600;
 }
 
 ::selection {

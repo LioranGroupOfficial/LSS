@@ -5,8 +5,7 @@ type ContactPayload = {
   name?: string;
   email?: string;
   company?: string;
-  budget?: string;
-  service?: string;
+  topic?: string;
   recipient?: string;
   message?: string;
 };
@@ -26,12 +25,11 @@ export async function POST(request: Request) {
   const name = body.name?.trim();
   const email = body.email?.trim().toLowerCase();
   const company = body.company?.trim() || "";
-  const budget = body.budget?.trim();
-  const service = body.service?.trim();
+  const topic = body.topic?.trim() || "General inquiry";
   const recipient = body.recipient?.trim();
   const message = body.message?.trim();
 
-  if (!name || !email || !message || !service || !budget || !recipient) {
+  if (!name || !email || !message) {
     return NextResponse.json(
       { message: "Please complete all required fields." },
       { status: 400 },
@@ -55,9 +53,8 @@ export async function POST(request: Request) {
       name,
       email,
       company,
-      budget,
-      service,
-      recipient,
+      topic,
+      recipient: recipient || "contact@lioransolutions.com",
       message,
       createdAt: new Date(),
       source: "website-contact-form",
@@ -65,14 +62,14 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json(
-      { message: "Your inquiry has been submitted successfully." },
+      { message: "Your message has been sent successfully. We'll get back to you within 24 hours." },
       { status: 201 },
     );
   } catch (error) {
     console.error("Failed to save contact submission", error);
 
     return NextResponse.json(
-      { message: "Something went wrong while saving your inquiry." },
+      { message: "Something went wrong while saving your message." },
       { status: 500 },
     );
   }

@@ -4,9 +4,9 @@ import { useState } from "react";
 import { ThemeToggle } from "./theme-toggle";
 
 const navLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#support", label: "Support" },
+  { href: "#products", label: "Products" },
+  { href: "#features", label: "Features" },
+  { href: "#about", label: "About" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -17,18 +17,18 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-4 z-30 mb-8">
-      <div className="mx-auto max-w-6xl rounded-[1.75rem] border border-[var(--border-strong)] bg-[var(--surface)]/90 px-4 py-3 shadow-[0_12px_40px_var(--shadow-soft)] backdrop-blur">
+      <div className="mx-auto max-w-6xl rounded-lg border border-[var(--border-soft)] bg-[var(--surface)] px-4 py-3 shadow-[0_8px_24px_var(--shadow-soft)]">
         <div className="flex items-center justify-between gap-3">
           <a href="#top" className="flex min-w-0 items-center gap-3" onClick={closeMenu}>
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-4xl bg-[var(--accent)] text-sm font-black uppercase tracking-[0.32em] text-[var(--accent-contrast)]">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--accent)] text-xs font-bold uppercase text-[var(--accent-contrast)]">
               LSS
             </div>
             <div className="min-w-0">
-              <p className="text-xs font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase sm:text-sm">
-                Lioran Group
+              <p className="text-xs font-semibold text-[var(--text-muted)] uppercase">
+                Lioran
               </p>
-              <p className="truncate text-sm font-semibold sm:text-base">
-                Lioran Software Solutions
+              <p className="truncate text-sm font-semibold">
+                Developer Solutions
               </p>
             </div>
           </a>
@@ -48,22 +48,17 @@ export function SiteHeader() {
 
             <div className="flex items-center gap-3">
               <ThemeToggle />
-              <a
-                href="#contact"
-                className="rounded-full bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-[var(--accent-contrast)] transition hover:translate-y-[-1px] hover:shadow-[0_10px_24px_rgba(10,120,106,0.28)]"
-              >
-                Start a Project
-              </a>
             </div>
           </div>
 
           <div className="flex items-center gap-3 md:hidden">
+            <ThemeToggle />
             <button
               type="button"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen((current) => !current)}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border-strong)] bg-[var(--surface-muted)] text-[var(--text-main)] transition hover:bg-[var(--surface)]"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-strong)] bg-[var(--surface-muted)] text-[var(--text-main)] transition hover:bg-[var(--surface)]"
             >
               <span className="sr-only">{menuOpen ? "Close menu" : "Open menu"}</span>
               <svg
@@ -100,30 +95,12 @@ export function SiteHeader() {
                   key={link.href}
                   href={link.href}
                   onClick={closeMenu}
-                  className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-muted)] px-4 py-3 text-sm font-medium text-[var(--text-soft)] transition hover:text-[var(--text-main)]"
+                  className="rounded-lg border border-[var(--border-soft)] bg-[var(--surface-muted)] px-4 py-2 text-sm font-medium text-[var(--text-soft)] transition hover:text-[var(--text-main)]"
                 >
                   {link.label}
                 </a>
               ))}
             </nav>
-
-            <div className="mt-4 flex items-center justify-between gap-3 rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-muted)] p-3">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-muted)]">
-                  Theme
-                </p>
-                <p className="text-sm text-[var(--text-soft)]">Toggle appearance</p>
-              </div>
-              <ThemeToggle />
-            </div>
-
-            <a
-              href="#contact"
-              onClick={closeMenu}
-              className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-[var(--accent)] px-4 py-3 text-sm font-semibold text-[var(--accent-contrast)] transition hover:translate-y-[-1px] hover:shadow-[0_10px_24px_rgba(10,120,106,0.28)]"
-            >
-              Start a Project
-            </a>
           </div>
         ) : null}
       </div>
