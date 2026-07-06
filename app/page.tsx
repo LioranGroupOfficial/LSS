@@ -1,337 +1,185 @@
-import { ContactForm } from "./components/contact-form";
-import { SiteHeader } from "./components/site-header";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { PageShell } from "./components/page-shell";
+import { SectionHeading } from "./components/section-heading";
 
-const products = [
+const offerings = [
+  {
+    title: "Developer-first database",
+    description:
+      "We build LioranDB for developers who want a simple backend foundation with clean APIs and practical deployment options.",
+  },
+  {
+    title: "Managed LioranDB hosting",
+    description:
+      "We provision and manage hosted LioranDB servers with setup, monitoring, maintenance, and support included in managed plans.",
+  },
+  {
+    title: "Self-hosted licenses",
+    description:
+      "Teams that want their own VPS or server can run LioranDB under paid self-hosted licenses after purchase.",
+  },
+  {
+    title: "Founder-friendly database help",
+    description:
+      "We help startups deploy, maintain, back up, monitor, and scale their database setup without overcomplicating operations.",
+  },
+];
+
+const productRoadmap = [
   {
     name: "LioranDB",
-    status: "🟢 Live & Public",
-    description: "Embedded, file-based document database for Node.js",
-    details: [
-      "No server required by default",
-      "Optional server + CLI",
-      "TypeScript-first driver",
-      "HTTP-based REST API",
-      "Perfect for embedded & edge use cases"
-    ],
-    link: "db.lioransolutions.com",
-    github: "github.com/LioranGroupOfficial/liorandb"
+    status: "Available now",
+    summary: "Developer-first database for modern apps and startup workloads.",
   },
   {
     name: "LioranBastion",
-    status: "🟡 Launching Soon",
-    description: "S3-like storage & asset management layer",
-    details: [
-      "Secure file storage",
-      "Asset management",
-      "TypeScript/JavaScript support",
-      "Optimized for performance",
-      "Built for production workloads"
-    ],
-    link: "Lioran.group",
-    github: "Coming Soon"
+    status: "Coming soon",
+    summary: "Object storage for developer workloads and application assets.",
   },
   {
     name: "Lioran Auth",
-    status: "🟡 Launching Soon",
-    description: "Authentication & authorization system",
-    details: [
-      "Developer-friendly API",
-      "TypeScript/JavaScript support",
-      "Scalable & secure",
-      "Built for the modern web",
-      "Production-ready infrastructure"
-    ],
-    link: "Lioran.group",
-    github: "Coming Soon"
-  }
+    status: "Coming soon",
+    summary: "Authentication and identity tools designed for builders.",
+  },
 ];
 
-const features = [
-  {
-    icon: "⚡",
-    title: "Developer First",
-    description: "Clean APIs, great documentation, and TypeScript/JavaScript everywhere"
-  },
-  {
-    icon: "🔒",
-    title: "Built for Production",
-    description: "Reliable infrastructure you can trust to power real applications"
-  },
-  {
-    icon: "🛠️",
-    title: "Complete Ecosystem",
-    description: "Database, storage, and auth—all the tools you need to build"
-  },
-  {
-    icon: "🚀",
-    title: "No Vendor Lock-in",
-    description: "Own your infrastructure, control your destiny"
-  }
+const reasons = [
+  "Built for developers, startups, SaaS builders, and small businesses.",
+  "Managed and self-hosted options so teams can choose how they operate.",
+  "India-based operations with Indian law and startup-friendly support in mind.",
+  "Clean product direction across database now, storage and auth next.",
 ];
+
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "Build your backend with Lioran Developer Infrastructure. Explore LioranDB, managed hosting, self-hosted licensing, and startup-friendly database support.",
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[var(--page-bg)] text-[var(--text-main)]">
-      <div className="mx-auto flex w-full max-w-7xl flex-col px-5 pb-16 pt-5 sm:px-8 lg:px-10">
-        <SiteHeader />
-
-        {/* Hero Section */}
-        <section id="top" className="py-16 sm:py-24">
-          <div className="space-y-6">
-            <div className="space-y-2">
-              <h1 className="text-5xl font-bold tracking-tight sm:text-6xl">
-                Build Your Backend
-              </h1>
-              <h2 className="text-2xl font-normal text-[var(--text-soft)] sm:text-3xl">
-                with Lioran's Developer Infrastructure
-              </h2>
-            </div>
-            <p className="max-w-2xl text-lg text-[var(--text-soft)] leading-8">
-              We're building a complete developer ecosystem. LioranDB is live now. Database, storage, and auth—all designed for developers who want clean APIs, TypeScript support, and production-grade reliability.
+    <PageShell>
+      <section className="grid gap-10 py-16 sm:py-24 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:items-center">
+        <div className="space-y-6">
+          <div className="space-y-3">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
+              Lioran Developer Solutions
             </p>
-            <div className="flex flex-wrap gap-4 pt-4">
-              <a
-                href="https://db.lioransolutions.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex px-6 py-3 bg-[var(--accent)] text-[var(--accent-contrast)] font-semibold rounded border border-[var(--accent)] hover:opacity-90 transition"
-              >
-                Explore LioranDB
-              </a>
-              <a
-                href="https://github.com/LioranGroupOfficial"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex px-6 py-3 border border-[var(--border-strong)] text-[var(--text-main)] font-semibold rounded hover:bg-[var(--surface-muted)] transition"
-              >
-                GitHub
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* Products Section */}
-        <section id="products" className="py-16 sm:py-24 border-t border-[var(--border-soft)]">
-          <div className="space-y-4 mb-12">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Our Products</h2>
-            <p className="text-lg text-[var(--text-soft)] max-w-2xl">
-              A complete infrastructure built by developers, for developers.
+            <h1 className="text-5xl font-bold tracking-tight sm:text-6xl">
+              Build your backend with Lioran Developer Infrastructure.
+            </h1>
+            <p className="max-w-3xl text-lg leading-8 text-[var(--text-soft)]">
+              Lioran Developer Solutions is building practical infrastructure for
+              startups and developers. LioranDB is our database product, with
+              managed hosting, self-hosted licensing, and operational support for
+              teams that need a simpler way to run backend systems.
             </p>
           </div>
 
-          <div className="grid gap-6 sm:gap-8 lg:grid-cols-3">
-            {products.map((product) => (
-              <div
-                key={product.name}
-                className="border border-[var(--border-soft)] bg-[var(--surface)] rounded-lg p-8 hover:border-[var(--border-strong)] transition"
-              >
-                <div className="space-y-4">
-                  <div>
-                    <div className="flex items-start justify-between mb-2">
-                      <h3 className="text-2xl font-bold">{product.name}</h3>
-                      <span className="text-sm font-semibold px-3 py-1 rounded bg-[var(--surface-muted)] whitespace-nowrap">
-                        {product.status}
-                      </span>
-                    </div>
-                    <p className="text-[var(--text-soft)]">{product.description}</p>
-                  </div>
-
-                  <ul className="space-y-2">
-                    {product.details.map((detail, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-sm text-[var(--text-soft)]">
-                        <span className="text-[var(--accent)] font-bold mt-0.5">→</span>
-                        <span>{detail}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="pt-4 border-t border-[var(--border-soft)] space-y-2">
-                    <div className="text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wide">
-                      Documentation
-                    </div>
-                    <a
-                      href={`https://${product.link}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block text-[var(--accent)] hover:underline font-semibold break-all"
-                    >
-                      {product.link}
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="flex flex-wrap gap-4">
+            <Link
+              href="/pricing"
+              className="inline-flex rounded-lg border border-[var(--accent)] bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-[var(--accent-contrast)] transition hover:opacity-90"
+            >
+              View Pricing
+            </Link>
+            <Link
+              href="/founder"
+              className="inline-flex rounded-lg border border-[var(--border-strong)] px-6 py-3 text-sm font-semibold text-[var(--text-main)] transition hover:bg-[var(--surface-muted)]"
+            >
+              Contact Founder
+            </Link>
           </div>
-        </section>
+        </div>
 
-        {/* Features Section */}
-        <section id="features" className="py-16 sm:py-24 border-t border-[var(--border-soft)]">
-          <div className="space-y-4 mb-12">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Why Choose Lioran</h2>
-            <p className="text-lg text-[var(--text-soft)] max-w-2xl">
-              Built by engineers who understand what developers need.
-            </p>
-          </div>
-
-          <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
-            {features.map((feature) => (
-              <div
-                key={feature.title}
-                className="border border-[var(--border-soft)] bg-[var(--surface)] rounded-lg p-8"
-              >
-                <div className="text-4xl mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                <p className="text-[var(--text-soft)]">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Code Example Section */}
-        <section id="example" className="py-16 sm:py-24 border-t border-[var(--border-soft)]">
-          <div className="space-y-4 mb-8">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Get Started</h2>
-            <p className="text-lg text-[var(--text-soft)]">
-              LioranDB requires zero configuration
-            </p>
-          </div>
-
-          <div className="border border-[var(--border-soft)] bg-[var(--surface-muted)] rounded-lg p-6 overflow-x-auto">
-            <pre className="text-sm text-[var(--text-soft)] font-mono">
-{`import { LioranManager } from "@liorandb/core";
-
-const manager = new LioranManager({ rootPath: "./data" });
-const db = await manager.db("app");
-const users = db.collection("users");
-
-// Insert
-await users.insertOne({ email: "dev@lioran.dev" });
-
-// Query
-const user = await users.findOne({ email: "dev@lioran.dev" });
-console.log(user);
-
-await manager.close();`}
-            </pre>
-          </div>
-
-          <div className="mt-8 p-6 border border-[var(--border-soft)] bg-[var(--surface)] rounded-lg">
-            <h3 className="font-semibold mb-3">Install @liorandb/core</h3>
-            <code className="text-[var(--accent)] font-mono text-sm">
-              npm install @liorandb/core
-            </code>
-          </div>
-        </section>
-
-        {/* About Lioran Section */}
-        <section id="about" className="py-16 sm:py-24 border-t border-[var(--border-soft)]">
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">About Lioran</h2>
-              <p className="text-lg text-[var(--text-soft)] leading-8 max-w-3xl">
-                Lioran is building a complete developer ecosystem from the ground up. Started by Swaraj Puppalwar (CTO) and the Lioran team, we're creating infrastructure that developers actually want to use. No black boxes. No corporate nonsense. Just clean, reliable tools.
-              </p>
-            </div>
-
-            <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
-              <div className="border border-[var(--border-soft)] bg-[var(--surface)] rounded-lg p-6">
-                <h3 className="text-lg font-bold mb-3">Lioran Group</h3>
-                <p className="text-[var(--text-soft)] text-sm mb-4">
-                  The parent organization driving the vision for a better developer ecosystem.
-                </p>
-                <a
-                  href="https://lioran.group"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[var(--accent)] font-semibold hover:underline"
-                >
-                  Visit lioran.group →
-                </a>
-              </div>
-
-              <div className="border border-[var(--border-soft)] bg-[var(--surface)] rounded-lg p-6">
-                <h3 className="text-lg font-bold mb-3">CTO & Founder</h3>
-                <p className="text-[var(--text-soft)] text-sm mb-4">
-                  Swaraj Puppalwar, system architect and full-stack engineer building production infrastructure.
-                </p>
-                <a
-                  href="https://github.com/UltronTheAI"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[var(--accent)] font-semibold hover:underline"
-                >
-                  GitHub Profile →
-                </a>
-              </div>
-            </div>
-
-            <div className="space-y-3">
-              <h3 className="font-semibold">Connect</h3>
-              <div className="flex flex-wrap gap-4 text-sm">
-                <a
-                  href="https://github.com/LioranGroupOfficial"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[var(--accent)] hover:underline"
-                >
-                  GitHub Organization →
-                </a>
-                <a
-                  href="mailto:cto@lioransolutions.com"
-                  className="text-[var(--accent)] hover:underline"
-                >
-                  Email CTO →
-                </a>
-                <a
-                  href="https://lioran.group"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[var(--accent)] hover:underline"
-                >
-                  Lioran.group →
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Form Section */}
-        <section id="contact" className="py-16 sm:py-24 border-t border-[var(--border-soft)]">
-          <div className="max-w-2xl">
-            <div className="space-y-4 mb-8">
-              <h2 className="text-3xl font-bold tracking-tight">Get in Touch</h2>
-              <p className="text-lg text-[var(--text-soft)]">
-                Have questions about our products? Interested in partnerships? Let's talk.
-              </p>
-            </div>
-
-            <div className="border border-[var(--border-soft)] bg-[var(--surface)] rounded-lg p-8">
-              <ContactForm />
-            </div>
-          </div>
-        </section>
-
-        {/* Footer */}
-        <footer className="py-12 border-t border-[var(--border-soft)] mt-16">
+        <div className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-8">
           <div className="space-y-4">
-            <p className="text-sm text-[var(--text-muted)]">
-              © 2026 Lioran Software Solutions. Built with focus on developer experience.
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--text-muted)]">
+              Built for startup teams
             </p>
-            <div className="flex flex-wrap gap-4 text-sm text-[var(--text-soft)]">
-              <a href="https://lioran.group" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--accent)]">
-                Lioran Group
-              </a>
-              <a href="https://github.com/LioranGroupOfficial" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--accent)]">
-                GitHub
-              </a>
-              <a href="mailto:cto@lioransolutions.com" className="hover:text-[var(--accent)]">
-                Contact
-              </a>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-xl border border-[var(--border-soft)] bg-[var(--surface-muted)] p-4">
+                <p className="text-sm text-[var(--text-muted)]">Managed plans</p>
+                <p className="mt-2 text-2xl font-semibold">Setup + support</p>
+              </div>
+              <div className="rounded-xl border border-[var(--border-soft)] bg-[var(--surface-muted)] p-4">
+                <p className="text-sm text-[var(--text-muted)]">Self-hosted</p>
+                <p className="mt-2 text-2xl font-semibold">Licensing options</p>
+              </div>
             </div>
+            <p className="text-sm leading-7 text-[var(--text-soft)]">
+              Setup within 24 hours after confirmed payment for managed hosting
+              and license provisioning.
+            </p>
           </div>
-        </footer>
-      </div>
-    </main>
+        </div>
+      </section>
+
+      <section className="border-t border-[var(--border-soft)] py-16 sm:py-24">
+        <SectionHeading
+          eyebrow="What we exactly do"
+          title="Infrastructure products and practical support for builders"
+          description="We focus on clear developer products, simple commercial options, and support that helps startups move into production with less friction."
+        />
+
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          {offerings.map((offering) => (
+            <div
+              key={offering.title}
+              className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-8"
+            >
+              <h2 className="text-2xl font-semibold">{offering.title}</h2>
+              <p className="mt-4 text-[var(--text-soft)]">{offering.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-t border-[var(--border-soft)] py-16 sm:py-24">
+        <SectionHeading
+          eyebrow="Product roadmap"
+          title="LioranDB now, storage and auth next"
+          description="The Lioran Group product direction starts with database infrastructure and expands into related backend building blocks."
+        />
+
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          {productRoadmap.map((product) => (
+            <div
+              key={product.name}
+              className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-8"
+            >
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
+                {product.status}
+              </p>
+              <h2 className="mt-4 text-2xl font-semibold">{product.name}</h2>
+              <p className="mt-4 text-[var(--text-soft)]">{product.summary}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-t border-[var(--border-soft)] py-16 sm:py-24">
+        <SectionHeading
+          eyebrow="Why Lioran"
+          title="Simple language, clear scope, founder-led execution"
+          description="We stay focused on infrastructure that early teams can understand, budget for, and run with confidence."
+        />
+
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          {reasons.map((reason) => (
+            <div
+              key={reason}
+              className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-6 text-[var(--text-soft)]"
+            >
+              {reason}
+            </div>
+          ))}
+        </div>
+      </section>
+    </PageShell>
   );
 }
-

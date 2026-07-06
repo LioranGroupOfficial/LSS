@@ -1,25 +1,31 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./theme-toggle";
 
 const navLinks = [
-  { href: "#products", label: "Products" },
-  { href: "#features", label: "Features" },
+  { href: "/", label: "Home" },
+  { href: "/what-we-do", label: "What We Do" },
+  { href: "/pricing", label: "Pricing" },
   { href: "#about", label: "About" },
+  { href: "/founder", label: "Founder" },
   { href: "#contact", label: "Contact" },
 ];
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const closeMenu = () => setMenuOpen(false);
+  const isActive = (href: string) => pathname === href;
 
   return (
     <header className="sticky top-4 z-30 mb-8">
       <div className="mx-auto max-w-6xl rounded-lg border border-[var(--border-soft)] bg-[var(--surface)] px-4 py-3 shadow-[0_8px_24px_var(--shadow-soft)]">
         <div className="flex items-center justify-between gap-3">
-          <a href="#top" className="flex min-w-0 items-center gap-3" onClick={closeMenu}>
+          <Link href="/" className="flex min-w-0 items-center gap-3" onClick={closeMenu}>
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--accent)] text-xs font-bold uppercase text-[var(--accent-contrast)]">
               LSS
             </div>
@@ -31,18 +37,20 @@ export function SiteHeader() {
                 Developer Solutions
               </p>
             </div>
-          </a>
+          </Link>
 
           <div className="hidden items-center gap-6 md:flex">
             <nav className="flex items-center gap-6 text-sm font-medium text-[var(--text-soft)]">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
-                  className="transition hover:text-[var(--text-main)]"
+                  className={`transition hover:text-[var(--text-main)] ${
+                    isActive(link.href) ? "text-[var(--text-main)]" : ""
+                  }`}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
 
@@ -91,14 +99,18 @@ export function SiteHeader() {
           <div className="mt-4 border-t border-[var(--border-soft)] pt-4 md:hidden">
             <nav className="grid gap-2">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   onClick={closeMenu}
-                  className="rounded-lg border border-[var(--border-soft)] bg-[var(--surface-muted)] px-4 py-2 text-sm font-medium text-[var(--text-soft)] transition hover:text-[var(--text-main)]"
+                  className={`rounded-lg border px-4 py-2 text-sm font-medium transition hover:text-[var(--text-main)] ${
+                    isActive(link.href)
+                      ? "border-[var(--accent)] bg-[var(--accent-fade)] text-[var(--text-main)]"
+                      : "border-[var(--border-soft)] bg-[var(--surface-muted)] text-[var(--text-soft)]"
+                  }`}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>

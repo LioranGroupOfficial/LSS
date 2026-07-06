@@ -141,7 +141,7 @@ export function ContactForm() {
 
       <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-[var(--text-soft)]">
-          We'll get back to you within 24 hours.
+          We&apos;ll get back to you within 24 hours.
         </p>
         <button
           type="submit"
