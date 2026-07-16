@@ -42,7 +42,7 @@ export default function HomePage() {
       <Section className="border-b border-[var(--border-color)]">
         <Container>
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-start">
-            <div className="space-y-8">
+            <div className="min-w-0 space-y-8">
               <SectionHeading
                 eyebrow="Engineering First. Built in India."
                 title="Developer infrastructure, built in India."
@@ -52,7 +52,7 @@ export default function HomePage() {
                 Reduce dependence on foreign developer infrastructure while keeping
                 performance, reliability, security, and developer experience at the centre.
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
                 <ButtonLink href="/products">Explore Our Products</ButtonLink>
                 <ButtonLink href={GITHUB_ORG_URL} variant="secondary" external>
                   View on GitHub
@@ -63,9 +63,9 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="space-y-4">
+            <div className="min-w-0 space-y-4">
               <CodeBlock label="Connection sample" code={heroCode} />
-              <div className="grid gap-4 sm:grid-cols-3">
+              <div className="grid gap-4 md:grid-cols-3">
                 <div className="rounded-[6px] border border-[var(--border-color)] bg-[var(--background-secondary)] p-4">
                   <TerminalIcon className="h-5 w-5 text-[var(--accent)]" />
                   <p className="mt-3 text-sm font-semibold">Repository-led work</p>

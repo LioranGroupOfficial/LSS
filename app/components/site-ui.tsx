@@ -36,13 +36,13 @@ export function SectionHeading({
   description,
 }: SectionHeadingProps) {
   return (
-    <div className="max-w-3xl space-y-4">
+    <div className="max-w-3xl min-w-0 space-y-4">
       {eyebrow ? (
         <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[var(--accent)]">
           {eyebrow}
         </p>
       ) : null}
-      <h1 className="text-4xl font-semibold tracking-[-0.04em] text-[var(--text-primary)] sm:text-5xl lg:text-6xl">
+      <h1 className="text-[2rem] font-semibold tracking-[-0.04em] text-[var(--text-primary)] sm:text-5xl lg:text-6xl">
         {title}
       </h1>
       {description ? (
@@ -93,10 +93,10 @@ export function ButtonLink({
 }: ButtonLinkProps) {
   const className =
     variant === "primary"
-      ? "inline-flex h-[42px] items-center justify-center rounded-[5px] border border-[var(--accent)] bg-[var(--accent)] px-5 text-sm font-semibold text-[var(--background-primary)] transition-colors duration-150 hover:bg-transparent hover:text-[var(--text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--text-primary)]"
+      ? "inline-flex min-h-[42px] w-full items-center justify-center rounded-[5px] border border-[var(--accent)] bg-[var(--accent)] px-5 py-2 text-center text-sm font-semibold text-[var(--background-primary)] transition-colors duration-150 hover:bg-transparent hover:text-[var(--text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--text-primary)] sm:h-[42px] sm:w-auto"
       : variant === "secondary"
-        ? "inline-flex h-[42px] items-center justify-center rounded-[5px] border border-[var(--accent)] bg-transparent px-5 text-sm font-semibold text-[var(--text-primary)] transition-colors duration-150 hover:bg-[var(--background-secondary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--text-primary)]"
-        : "inline-flex items-center gap-2 text-sm font-semibold text-[var(--text-primary)] underline-offset-4 transition-colors duration-150 hover:text-[var(--accent)] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--text-primary)]";
+        ? "inline-flex min-h-[42px] w-full items-center justify-center rounded-[5px] border border-[var(--accent)] bg-transparent px-5 py-2 text-center text-sm font-semibold text-[var(--text-primary)] transition-colors duration-150 hover:bg-[var(--background-secondary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--text-primary)] sm:h-[42px] sm:w-auto"
+        : "inline-flex w-fit max-w-full items-center gap-2 text-sm font-semibold text-[var(--text-primary)] underline-offset-4 transition-colors duration-150 hover:text-[var(--accent)] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--text-primary)]";
 
   if (external) {
     return (
@@ -164,14 +164,14 @@ export function CodeBlock({ label, code }: CodeBlockProps) {
   const lines = code.trim().split("\n");
 
   return (
-    <div className="overflow-hidden rounded-[5px] border border-[var(--border-color)] bg-[#1a1f26]">
-      <div className="flex items-center justify-between border-b border-[var(--border-color)] bg-[var(--background-secondary)] px-4 py-3">
+    <div className="max-w-full overflow-hidden rounded-[5px] border border-[var(--border-color)] bg-[#1a1f26]">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border-color)] bg-[var(--background-secondary)] px-4 py-3">
         <span className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[var(--accent)]">
           {label}
         </span>
         <span className="text-[12px] text-[var(--text-muted)]">TypeScript</span>
       </div>
-      <pre className="overflow-x-auto p-4 text-sm leading-7 text-[var(--text-primary)]">
+      <pre className="max-w-full overflow-x-auto p-4 text-xs leading-6 text-[var(--text-primary)] sm:text-sm sm:leading-7">
         <code>
           {lines.map((line, index) => (
             <span key={`${label}-${index}`} className="block">
