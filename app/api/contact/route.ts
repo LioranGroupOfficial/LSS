@@ -1,12 +1,11 @@
 import { NextResponse } from "next/server";
-import { mongoClientPromise } from "../../../lib/mongodb";
+import { getMongoClientPromise } from "../../../lib/mongodb";
 
 type ContactPayload = {
   name?: string;
   email?: string;
   company?: string;
   topic?: string;
-  recipient?: string;
   message?: string;
 };
 
@@ -26,7 +25,6 @@ export async function POST(request: Request) {
   const email = body.email?.trim().toLowerCase();
   const company = body.company?.trim() || "";
   const topic = body.topic?.trim() || "General inquiry";
-  const recipient = body.recipient?.trim();
   const message = body.message?.trim();
 
   if (!name || !email || !message) {
@@ -45,7 +43,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    const client = await mongoClientPromise;
+    const client = await getMongoClientPromise();
     const database = client.db();
     const submissions = database.collection("contact_submissions");
 
@@ -54,7 +52,6 @@ export async function POST(request: Request) {
       email,
       company,
       topic,
-      recipient: recipient || "contact@lioransolutions.com",
       message,
       createdAt: new Date(),
       source: "website-contact-form",

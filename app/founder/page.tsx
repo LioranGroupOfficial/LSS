@@ -1,105 +1,103 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import Image from "next/image";
+import { createMetadata } from "@/lib/metadata";
+import {
+  FOUNDER_GITHUB_URL,
+  FOUNDER_IMAGE_URL,
+  FOUNDER_PORTFOLIO_URL,
+  FOUNDER_X_URL,
+  founderHighlights,
+  founderRecognition,
+  GITHUB_ORG_URL,
+  LIORAN_GROUP_URL,
+} from "@/lib/site";
 import { PageShell } from "../components/page-shell";
-import { SectionHeading } from "../components/section-heading";
+import { ButtonLink, Container, InfoCard, Section, SectionHeading } from "../components/site-ui";
 
-const founderCards = [
-  {
-    title: "Founder-led support",
-    description:
-      "Early customers can speak directly with the person shaping the product and the infrastructure direction.",
-  },
-  {
-    title: "Technical product ownership",
-    description:
-      "LioranDB and the surrounding platform are guided by hands-on backend and systems work.",
-  },
-  {
-    title: "Startup-first mindset",
-    description:
-      "The focus stays on practical rollout, clear trade-offs, and shipping without unnecessary process.",
-  },
-];
-
-const links = [
-  {
-    href: "https://github.com/UltronTheAI",
-    label: "Founder GitHub",
-  },
-  {
-    href: "https://github.com/LioranGroupOfficial",
-    label: "Lioran Group GitHub",
-  },
-];
-
-export const metadata: Metadata = {
+export const metadata = createMetadata({
   title: "Founder",
   description:
-    "Meet Swaraj Puppalwar, Founder & CTO of Lioran Developer Solutions, building LioranDB and developer infrastructure products.",
-  alternates: {
-    canonical: "/founder",
-  },
-};
+    "Founder profile for Swaraj Puppalwar, founder of Lioran Developer Solutions and Lioran Group.",
+  path: "/founder",
+});
 
 export default function FounderPage() {
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Swaraj Puppalwar",
+    jobTitle: "Founder & CTO",
+    image: FOUNDER_IMAGE_URL,
+    worksFor: {
+      "@type": "Organization",
+      name: "Lioran Developer Solutions",
+    },
+    sameAs: [FOUNDER_GITHUB_URL, FOUNDER_X_URL, FOUNDER_PORTFOLIO_URL],
+  };
+
   return (
     <PageShell>
-      <section className="py-16 sm:py-24">
-        <SectionHeading
-          eyebrow="Founder"
-          title="Swaraj Puppalwar, Founder & CTO"
-          description="Swaraj Puppalwar is a full-stack developer and system builder working on LioranDB, developer infrastructure, databases, backend systems, and scalable products."
-        />
-      </section>
+      <Section>
+        <Container>
+          <SectionHeading
+            eyebrow="Founder"
+            title="Swaraj Puppalwar"
+            description="Founder & CTO of Lioran Developer Solutions and Founder of Lioran Group. The founder page stays focused on developer infrastructure, public work, and relevant recognition."
+          />
+          <div className="mt-10 grid gap-6 lg:grid-cols-[320px_minmax(0,1fr)]">
+            <div className="rounded-[6px] border border-[var(--border-color)] bg-[var(--background-secondary)] p-6">
+              <Image
+                src={FOUNDER_IMAGE_URL}
+                alt="Swaraj Puppalwar"
+                width={160}
+                height={160}
+                className="h-40 w-40 rounded-full border border-[var(--border-color)] object-cover"
+              />
+              <div className="mt-6 space-y-3 text-sm text-[var(--text-muted)]">
+                <p>Founder & CTO, Lioran Developer Solutions</p>
+                <p>Founder, Lioran Group</p>
+                <div className="flex flex-wrap gap-3 pt-2">
+                  <ButtonLink href={FOUNDER_PORTFOLIO_URL} external>
+                    Portfolio
+                  </ButtonLink>
+                  <ButtonLink href={FOUNDER_GITHUB_URL} variant="secondary" external>
+                    GitHub
+                  </ButtonLink>
+                </div>
+              </div>
+            </div>
 
-      <section className="border-t border-[var(--border-soft)] py-16 sm:py-24">
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
-          <div className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
-              Founder profile
-            </p>
-            <p className="mt-6 text-lg leading-8 text-[var(--text-soft)]">
-              Lioran Developer Solutions is being built with a founder-led
-              approach to product and infrastructure. That means technical
-              decisions stay close to product reality, customer feedback reaches
-              the builder quickly, and support conversations remain grounded in
-              implementation details.
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex rounded-lg border border-[var(--accent)] bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-[var(--accent-contrast)] transition hover:opacity-90"
-              >
-                Contact Founder
-              </Link>
-              {links.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex rounded-lg border border-[var(--border-strong)] px-6 py-3 text-sm font-semibold text-[var(--text-main)] transition hover:bg-[var(--surface-muted)]"
-                >
-                  {link.label}
-                </a>
-              ))}
+            <div className="grid gap-6">
+              <InfoCard title="Profile summary">
+                <ul className="space-y-3 text-sm text-[var(--text-muted)]">
+                  {founderHighlights.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </InfoCard>
+              <InfoCard title="Verified recognition and participation">
+                <ul className="space-y-3 text-sm text-[var(--text-muted)]">
+                  {founderRecognition.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </InfoCard>
+              <InfoCard title="Relevant links">
+                <ul className="space-y-3 text-sm text-[var(--text-muted)]">
+                  <li><a href={FOUNDER_PORTFOLIO_URL} target="_blank" rel="noopener noreferrer">Portfolio</a></li>
+                  <li><a href={FOUNDER_GITHUB_URL} target="_blank" rel="noopener noreferrer">Founder GitHub</a></li>
+                  <li><a href={GITHUB_ORG_URL} target="_blank" rel="noopener noreferrer">Lioran Group GitHub</a></li>
+                  <li><a href={LIORAN_GROUP_URL} target="_blank" rel="noopener noreferrer">Lioran Group</a></li>
+                  <li><a href={FOUNDER_X_URL} target="_blank" rel="noopener noreferrer">X / Twitter</a></li>
+                </ul>
+              </InfoCard>
             </div>
           </div>
-
-          <div className="grid gap-6">
-            {founderCards.map((card) => (
-              <div
-                key={card.title}
-                className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-8"
-              >
-                <h2 className="text-xl font-semibold">{card.title}</h2>
-                <p className="mt-4 text-[var(--text-soft)]">{card.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </Container>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+      </Section>
     </PageShell>
   );
 }

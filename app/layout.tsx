@@ -1,66 +1,50 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SkipLink } from "./components/site-ui";
+import {
+  GITHUB_ORG_URL,
+  LIORAN_GROUP_URL,
+  SITE_URL,
+  WEBSITE_VERSION,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://lioransolutions.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Lioran Developer Solutions",
+    default: "Lioran Developer Solutions | Indian Developer Infrastructure",
     template: "%s | Lioran Developer Solutions",
   },
   description:
-    "Build your backend with Lioran Developer Infrastructure. Lioran Developer Solutions is an India-based developer infrastructure company building LioranDB, managed database hosting, self-hosted licenses, and upcoming storage and auth products.",
-  keywords: [
-    "Lioran Developer Solutions",
-    "LioranDB",
-    "managed database hosting",
-    "self-hosted database license",
-    "developer infrastructure",
-    "backend infrastructure",
-    "Indian startup infrastructure",
-    "database for startups",
-    "object storage",
-    "authentication",
-    "Lioran Group",
-  ],
+    "Lioran Developer Solutions builds databases, storage systems, authentication infrastructure, and backend platforms in India.",
   applicationName: "Lioran Developer Solutions",
   category: "technology",
-  authors: [{ name: "Lioran Developer Solutions" }, { name: "Swaraj Puppalwar" }],
-  creator: "Lioran Developer Solutions",
-  publisher: "Lioran Developer Solutions",
-  alternates: {
-    canonical: "/",
-  },
+  alternates: { canonical: "/" },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
-    },
   },
   openGraph: {
-    title: "Lioran Developer Solutions",
+    title: "Lioran Developer Solutions | Indian Developer Infrastructure",
     description:
-      "India-based developer infrastructure for startups and developers. LioranDB, managed hosting, self-hosted licenses, and upcoming storage and auth products.",
-    url: "https://lioransolutions.com",
-    siteName: "Lioran Developer Solutions",
+      "Lioran Developer Solutions builds databases, storage systems, authentication infrastructure, and backend platforms in India.",
     type: "website",
     locale: "en_US",
+    url: SITE_URL,
+    siteName: "Lioran Developer Solutions",
     images: [
       {
         url: "/LSS-smp.png",
+        width: 1200,
+        height: 630,
         alt: "Lioran Developer Solutions",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lioran Developer Solutions",
+    title: "Lioran Developer Solutions | Indian Developer Infrastructure",
     description:
-      "LioranDB, managed database hosting, self-hosted licenses, and developer infrastructure built for startups.",
+      "Lioran Developer Solutions builds databases, storage systems, authentication infrastructure, and backend platforms in India.",
     images: ["/LSS-smp.png"],
   },
   icons: {
@@ -75,13 +59,47 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Lioran Developer Solutions",
+    url: SITE_URL,
+    parentOrganization: {
+      "@type": "Organization",
+      name: "Lioran Group",
+      url: LIORAN_GROUP_URL,
+    },
+    sameAs: [GITHUB_ORG_URL, LIORAN_GROUP_URL],
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Lioran Developer Solutions",
+    url: SITE_URL,
+    description:
+      "Developer infrastructure, built in India. LDS develops database and backend infrastructure products.",
+  };
+
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className="h-full scroll-smooth antialiased"
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en">
+      <body>
+        <SkipLink />
+        {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/json"
+          id="lds-site-version"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({ version: WEBSITE_VERSION }) }}
+        />
+      </body>
     </html>
   );
 }

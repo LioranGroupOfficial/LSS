@@ -1,75 +1,73 @@
-import type { Metadata } from "next";
+import { createMetadata } from "@/lib/metadata";
+import {
+  CONTACT_EMAIL,
+  DISCORD_URL,
+  FOUNDER_PORTFOLIO_URL,
+  GITHUB_ORG_URL,
+  LIORAN_GROUP_URL,
+  SECURITY_EMAIL,
+  SITE_URL,
+} from "@/lib/site";
 import { ContactForm } from "../components/contact-form";
 import { PageShell } from "../components/page-shell";
-import { SectionHeading } from "../components/section-heading";
+import { Container, InfoCard, Section, SectionHeading } from "../components/site-ui";
 
-const contactCards = [
-  {
-    title: "General",
-    value: "contact@lioransolutions.com",
-    href: "mailto:contact@lioransolutions.com",
-  },
-  {
-    title: "Founder/CTO",
-    value: "cto@lioransolutions.com",
-    href: "mailto:cto@lioransolutions.com",
-  },
-  {
-    title: "GitHub",
-    value: "github.com/LioranGroupOfficial",
-    href: "https://github.com/LioranGroupOfficial",
-  },
-  {
-    title: "Lioran Group",
-    value: "lioran.group",
-    href: "https://lioran.group",
-  },
-];
-
-export const metadata: Metadata = {
+export const metadata = createMetadata({
   title: "Contact",
   description:
-    "Contact Lioran Developer Solutions for managed LioranDB hosting, self-hosted licensing, and general infrastructure questions.",
-  alternates: {
-    canonical: "/contact",
-  },
-};
+    "Contact Lioran Developer Solutions for product inquiries, early access, technical collaboration, careers, or security disclosures.",
+  path: "/contact",
+});
+
+const cards = [
+  ["Product inquiries", CONTACT_EMAIL],
+  ["LioranDB early access", CONTACT_EMAIL],
+  ["Technical collaboration", CONTACT_EMAIL],
+  ["Infrastructure partnerships", CONTACT_EMAIL],
+  ["Careers", "careers@lioransolutions.com"],
+  ["Security disclosure", SECURITY_EMAIL],
+  ["Media", CONTACT_EMAIL],
+  ["General inquiries", CONTACT_EMAIL],
+] as const;
 
 export default function ContactPage() {
   return (
     <PageShell>
-      <section className="py-16 sm:py-24">
-        <SectionHeading
-          eyebrow="Contact"
-          title="Talk to Lioran Developer Solutions"
-          description="Use the contact form for product, sales, support, or founder conversations. We keep communication direct and practical."
-        />
-      </section>
-
-      <section className="border-t border-[var(--border-soft)] py-16 sm:py-24">
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
-            {contactCards.map((card) => (
-              <a
-                key={card.title}
-                href={card.href}
-                target={card.href.startsWith("http") ? "_blank" : undefined}
-                rel={card.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-6 transition hover:border-[var(--border-strong)]"
-              >
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
-                  {card.title}
-                </p>
-                <p className="mt-3 break-all text-[var(--text-soft)]">{card.value}</p>
-              </a>
-            ))}
+      <Section>
+        <Container>
+          <SectionHeading
+            eyebrow="Contact"
+            title="Talk to Lioran Developer Solutions"
+            description="Use the form for product and engineering conversations. The page only claims successful delivery when the backend confirms the submission."
+          />
+          <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+            <div className="grid gap-6">
+              <InfoCard title="Contact categories">
+                <ul className="space-y-3 text-sm text-[var(--text-muted)]">
+                  {cards.map(([label, email]) => (
+                    <li key={label}>
+                      <strong className="text-[var(--text-primary)]">{label}:</strong> {email}
+                    </li>
+                  ))}
+                </ul>
+              </InfoCard>
+              <InfoCard title="Reference links">
+                <ul className="space-y-3 text-sm text-[var(--text-muted)]">
+                  <li><a href={SITE_URL} target="_blank" rel="noopener noreferrer">LDS website</a></li>
+                  <li><a href={LIORAN_GROUP_URL} target="_blank" rel="noopener noreferrer">Lioran Group</a></li>
+                  <li><a href={GITHUB_ORG_URL} target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                  <li><a href={DISCORD_URL} target="_blank" rel="noopener noreferrer">Discord</a></li>
+                  <li><a href={FOUNDER_PORTFOLIO_URL} target="_blank" rel="noopener noreferrer">Founder portfolio</a></li>
+                  <li><a href="/security">Security page</a></li>
+                </ul>
+              </InfoCard>
+            </div>
+            <div className="rounded-[6px] border border-[var(--border-color)] bg-[var(--background-secondary)] p-6">
+              <ContactForm />
+            </div>
           </div>
-
-          <div className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-8">
-            <ContactForm />
-          </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
     </PageShell>
   );
 }

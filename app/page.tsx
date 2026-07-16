@@ -1,185 +1,193 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import { createMetadata } from "@/lib/metadata";
+import { engineeringPrinciples, GITHUB_ORG_URL, LIORAN_GROUP_URL, products } from "@/lib/site";
+import { CodeIcon, DatabaseIcon, ServerIcon, ShieldIcon, TerminalIcon } from "./components/icons";
 import { PageShell } from "./components/page-shell";
-import { SectionHeading } from "./components/section-heading";
+import {
+  ButtonLink,
+  CodeBlock,
+  Container,
+  InfoCard,
+  Section,
+  SectionHeading,
+  TechnicalTable,
+} from "./components/site-ui";
 
-const offerings = [
-  {
-    title: "Developer-first database",
-    description:
-      "We build LioranDB for developers who want a simple backend foundation with clean APIs and practical deployment options.",
-  },
-  {
-    title: "Managed LioranDB hosting",
-    description:
-      "We provision and manage hosted LioranDB servers with setup, monitoring, maintenance, and support included in managed plans.",
-  },
-  {
-    title: "Self-hosted licenses",
-    description:
-      "Teams that want their own VPS or server can run LioranDB under paid self-hosted licenses after purchase.",
-  },
-  {
-    title: "Founder-friendly database help",
-    description:
-      "We help startups deploy, maintain, back up, monitor, and scale their database setup without overcomplicating operations.",
-  },
-];
-
-const productRoadmap = [
-  {
-    name: "LioranDB",
-    status: "Available now",
-    summary: "Developer-first database for modern apps and startup workloads.",
-  },
-  {
-    name: "LioranBastion",
-    status: "Coming soon",
-    summary: "Object storage for developer workloads and application assets.",
-  },
-  {
-    name: "Lioran Auth",
-    status: "Coming soon",
-    summary: "Authentication and identity tools designed for builders.",
-  },
-];
-
-const reasons = [
-  "Built for developers, startups, SaaS builders, and small businesses.",
-  "Managed and self-hosted options so teams can choose how they operate.",
-  "India-based operations with Indian law and startup-friendly support in mind.",
-  "Clean product direction across database now, storage and auth next.",
-];
-
-export const metadata: Metadata = {
-  title: "Home",
+export const metadata = createMetadata({
+  title: "Developer infrastructure, built in India",
   description:
-    "Build your backend with Lioran Developer Infrastructure. Explore LioranDB, managed hosting, self-hosted licensing, and startup-friendly database support.",
-  alternates: {
-    canonical: "/",
-  },
-};
+    "Lioran Developer Solutions builds databases, storage systems, authentication infrastructure, and backend platforms for developers, SaaS companies, and Indian technology products.",
+  path: "/",
+});
 
-export default function Home() {
+const heroCode = `
+import { LioranManager } from "@liorandb/core";
+
+const database = new LioranManager({
+  rootPath: "./data",
+  databaseName: "production",
+});
+
+await database.connect();
+await database.insert("accounts", {
+  id: "acct_001",
+  region: "in-central",
+  status: "active",
+});
+`;
+
+export default function HomePage() {
   return (
     <PageShell>
-      <section className="grid gap-10 py-16 sm:py-24 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:items-center">
-        <div className="space-y-6">
-          <div className="space-y-3">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
-              Lioran Developer Solutions
-            </p>
-            <h1 className="text-5xl font-bold tracking-tight sm:text-6xl">
-              Build your backend with Lioran Developer Infrastructure.
-            </h1>
-            <p className="max-w-3xl text-lg leading-8 text-[var(--text-soft)]">
-              Lioran Developer Solutions is building practical infrastructure for
-              startups and developers. LioranDB is our database product, with
-              managed hosting, self-hosted licensing, and operational support for
-              teams that need a simpler way to run backend systems.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap gap-4">
-            <Link
-              href="/pricing"
-              className="inline-flex rounded-lg border border-[var(--accent)] bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-[var(--accent-contrast)] transition hover:opacity-90"
-            >
-              View Pricing
-            </Link>
-            <Link
-              href="/founder"
-              className="inline-flex rounded-lg border border-[var(--border-strong)] px-6 py-3 text-sm font-semibold text-[var(--text-main)] transition hover:bg-[var(--surface-muted)]"
-            >
-              Contact Founder
-            </Link>
-          </div>
-        </div>
-
-        <div className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-8">
-          <div className="space-y-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--text-muted)]">
-              Built for startup teams
-            </p>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-xl border border-[var(--border-soft)] bg-[var(--surface-muted)] p-4">
-                <p className="text-sm text-[var(--text-muted)]">Managed plans</p>
-                <p className="mt-2 text-2xl font-semibold">Setup + support</p>
-              </div>
-              <div className="rounded-xl border border-[var(--border-soft)] bg-[var(--surface-muted)] p-4">
-                <p className="text-sm text-[var(--text-muted)]">Self-hosted</p>
-                <p className="mt-2 text-2xl font-semibold">Licensing options</p>
-              </div>
-            </div>
-            <p className="text-sm leading-7 text-[var(--text-soft)]">
-              Setup within 24 hours after confirmed payment for managed hosting
-              and license provisioning.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-t border-[var(--border-soft)] py-16 sm:py-24">
-        <SectionHeading
-          eyebrow="What we exactly do"
-          title="Infrastructure products and practical support for builders"
-          description="We focus on clear developer products, simple commercial options, and support that helps startups move into production with less friction."
-        />
-
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {offerings.map((offering) => (
-            <div
-              key={offering.title}
-              className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-8"
-            >
-              <h2 className="text-2xl font-semibold">{offering.title}</h2>
-              <p className="mt-4 text-[var(--text-soft)]">{offering.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="border-t border-[var(--border-soft)] py-16 sm:py-24">
-        <SectionHeading
-          eyebrow="Product roadmap"
-          title="LioranDB now, storage and auth next"
-          description="The Lioran Group product direction starts with database infrastructure and expands into related backend building blocks."
-        />
-
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {productRoadmap.map((product) => (
-            <div
-              key={product.name}
-              className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-8"
-            >
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
-                {product.status}
+      <Section className="border-b border-[var(--border-color)]">
+        <Container>
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-start">
+            <div className="space-y-8">
+              <SectionHeading
+                eyebrow="Engineering First. Built in India."
+                title="Developer infrastructure, built in India."
+                description="Lioran Developer Solutions builds databases, storage systems, authentication infrastructure, and backend platforms for developers, SaaS companies, and Indian technology products."
+              />
+              <p className="max-w-[70ch] text-base leading-7 text-[var(--text-muted)] sm:text-lg">
+                Reduce dependence on foreign developer infrastructure while keeping
+                performance, reliability, security, and developer experience at the centre.
               </p>
-              <h2 className="mt-4 text-2xl font-semibold">{product.name}</h2>
-              <p className="mt-4 text-[var(--text-soft)]">{product.summary}</p>
+              <div className="flex flex-wrap gap-4">
+                <ButtonLink href="/products">Explore Our Products</ButtonLink>
+                <ButtonLink href={GITHUB_ORG_URL} variant="secondary" external>
+                  View on GitHub
+                </ButtonLink>
+                <ButtonLink href={LIORAN_GROUP_URL} variant="text" external>
+                  Part of Lioran Group
+                </ButtonLink>
+              </div>
             </div>
-          ))}
-        </div>
-      </section>
 
-      <section className="border-t border-[var(--border-soft)] py-16 sm:py-24">
-        <SectionHeading
-          eyebrow="Why Lioran"
-          title="Simple language, clear scope, founder-led execution"
-          description="We stay focused on infrastructure that early teams can understand, budget for, and run with confidence."
-        />
-
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {reasons.map((reason) => (
-            <div
-              key={reason}
-              className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-6 text-[var(--text-soft)]"
-            >
-              {reason}
+            <div className="space-y-4">
+              <CodeBlock label="Connection sample" code={heroCode} />
+              <div className="grid gap-4 sm:grid-cols-3">
+                <div className="rounded-[6px] border border-[var(--border-color)] bg-[var(--background-secondary)] p-4">
+                  <TerminalIcon className="h-5 w-5 text-[var(--accent)]" />
+                  <p className="mt-3 text-sm font-semibold">Repository-led work</p>
+                  <p className="mt-2 text-sm text-[var(--text-muted)]">Source, docs, and product direction stay close together.</p>
+                </div>
+                <div className="rounded-[6px] border border-[var(--border-color)] bg-[var(--background-secondary)] p-4">
+                  <ServerIcon className="h-5 w-5 text-[var(--accent)]" />
+                  <p className="mt-3 text-sm font-semibold">Backend systems</p>
+                  <p className="mt-2 text-sm text-[var(--text-muted)]">Database, storage, auth, and infrastructure foundations.</p>
+                </div>
+                <div className="rounded-[6px] border border-[var(--border-color)] bg-[var(--background-secondary)] p-4">
+                  <ShieldIcon className="h-5 w-5 text-[var(--accent)]" />
+                  <p className="mt-3 text-sm font-semibold">Clear trade-offs</p>
+                  <p className="mt-2 text-sm text-[var(--text-muted)]">Honest status, security baseline work, and measured scope.</p>
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container>
+          <SectionHeading
+            eyebrow="Infrastructure Mission"
+            title="Why domestic developer infrastructure matters"
+            description="LDS is an Indian deep-technology infrastructure company. The mission is technical and practical: build core systems in India, support Indian products, and keep infrastructure decisions closer to the teams that depend on them."
+          />
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            <InfoCard
+              title="Why infrastructure ownership matters"
+              description="Developer platforms shape cost, deployment options, data handling, and operational risk. LDS focuses on the layers where those choices become product constraints."
+            />
+            <InfoCard
+              title="Why data location matters"
+              description="For many teams, infrastructure strategy is tied to where systems run, how control is exercised, and what dependencies sit underneath the product stack."
+            />
+            <InfoCard
+              title="Why affordability matters"
+              description="Founders and engineering teams need infrastructure they can reason about, operate, and budget for without enterprise-only assumptions."
+            />
+            <InfoCard
+              title="Why engineering leads the message"
+              description="The website is documentation-first by design. It communicates through architecture, product boundaries, and implementation direction rather than decorative claims."
+            />
+          </div>
+        </Container>
+      </Section>
+
+      <Section className="border-y border-[var(--border-color)] bg-[rgba(57,62,70,0.2)]">
+        <Container>
+          <SectionHeading
+            eyebrow="Product Portfolio"
+            title="Three infrastructure tracks across the LDS ecosystem"
+            description="LioranDB is the active product line today. LioranBastion and Lioran Auth are future infrastructure efforts with their current status stated plainly."
+          />
+          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+            {products.map((product, index) => {
+              const Icon = index === 0 ? DatabaseIcon : index === 1 ? ServerIcon : ShieldIcon;
+              return (
+                <InfoCard
+                  key={product.slug}
+                  title={product.name}
+                  meta={`${product.category} • ${product.status}`}
+                  description={product.summary}
+                >
+                  <div className="flex items-center gap-3 text-sm text-[var(--text-primary)]">
+                    <Icon className="h-5 w-5 text-[var(--accent)]" />
+                    <span>{product.audience}</span>
+                  </div>
+                  <Link
+                    href={product.slug}
+                    className="inline-flex text-sm font-semibold text-[var(--text-primary)] underline-offset-4 hover:text-[var(--accent)] hover:underline"
+                  >
+                    View product details
+                  </Link>
+                </InfoCard>
+              );
+            })}
+          </div>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container>
+          <SectionHeading
+            eyebrow="Engineering Principles"
+            title="Public positioning backed by technical standards"
+            description="The LDS website reflects a stable design system, typed content, and clear product boundaries because the company itself is presented as a systems builder."
+          />
+          <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {engineeringPrinciples.map((principle, index) => {
+              const Icon = index % 3 === 0 ? CodeIcon : index % 3 === 1 ? TerminalIcon : ShieldIcon;
+              return (
+                <InfoCard
+                  key={principle.title}
+                  title={principle.title}
+                  description={principle.description}
+                >
+                  <Icon className="h-5 w-5 text-[var(--accent)]" />
+                </InfoCard>
+              );
+            })}
+          </div>
+        </Container>
+      </Section>
+
+      <Section className="border-y border-[var(--border-color)] bg-[rgba(57,62,70,0.2)]">
+        <Container>
+          <TechnicalTable
+            caption="LDS ecosystem overview"
+            headers={["Layer", "Entity", "Role"]}
+            rows={[
+              ["Parent organization", "Lioran Group", "Holds the broader ecosystem and company structure."],
+              ["Infrastructure company", "Lioran Developer Solutions", "Builds developer infrastructure and product direction."],
+              ["Current product", "LioranDB", "Database product developed by LDS."],
+              ["Future product", "LioranBastion", "Planned storage infrastructure effort under LDS."],
+              ["Future product", "Lioran Auth", "Planned authentication infrastructure effort under LDS."],
+            ]}
+          />
+        </Container>
+      </Section>
     </PageShell>
   );
 }
