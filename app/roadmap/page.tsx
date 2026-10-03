@@ -17,13 +17,6 @@ export const metadata = createMetadata({
 });
 
 export default function RoadmapPage() {
-  const badgeMap: Record<string, "success" | "warning" | "default" | "accent"> = {
-    Now: "success",
-    Next: "warning",
-    Later: "default",
-    Research: "accent",
-  };
-
   return (
     <PageShell>
       <Section variant="canvas" className="border-b border-[var(--hairline-strong)]">
@@ -43,7 +36,7 @@ export default function RoadmapPage() {
               <InfoCard
                 key={label}
                 title={label}
-                meta={<Badge variant={badgeMap[label] || "default"}>{label} Milestone</Badge>}
+                meta={<Badge variant="default">{label} Milestone</Badge>}
               >
                 <ul className="mt-2 space-y-3 text-sm text-[var(--body)]">
                   {items.map((item) => (

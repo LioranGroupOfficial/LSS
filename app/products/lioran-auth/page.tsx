@@ -26,7 +26,7 @@ export default function LioranAuthPage() {
         <Container>
           <div className="space-y-6">
             <div className="flex flex-wrap items-center gap-2">
-              <Badge variant="accent">Research Track</Badge>
+              <Badge variant="subtle">Research Track</Badge>
               <span className="text-xs text-[var(--muted)]">{product.category}</span>
             </div>
 
@@ -71,7 +71,7 @@ export default function LioranAuthPage() {
               <ul className="space-y-2.5 text-sm text-[var(--body)]">
                 {product.roadmap.map((item) => (
                   <li key={item} className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent-preview)]" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--ink)]" />
                     <span>{item}</span>
                   </li>
                 ))}

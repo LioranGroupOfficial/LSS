@@ -52,8 +52,8 @@ export default function LioranBastionPage() {
         <Container>
           <div className="space-y-6">
             <div className="flex flex-wrap items-center gap-2">
-              <Badge variant="success">v1 Pre-Alpha Live</Badge>
-              <Badge variant="default">Alpha: Oct 29, 2026</Badge>
+              <Badge variant="default">v1 Pre-Alpha Live</Badge>
+              <Badge variant="subtle">Alpha: Oct 29, 2026</Badge>
               <span className="text-xs text-[var(--muted)]">{product.category}</span>
             </div>
 
@@ -99,14 +99,14 @@ export default function LioranBastionPage() {
             <InfoCard title="Release Timeline & Status">
               <div className="space-y-3 text-sm text-[var(--body)]">
                 <p>{product.detail}</p>
-                <div className="mt-4 rounded-[8px] border border-[var(--hairline)] bg-[var(--canvas-soft)] p-4 space-y-2">
+                <div className="mt-4 rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--canvas-soft)] p-4 space-y-2">
                   <div className="flex items-center justify-between text-xs">
                     <span className="font-semibold text-[var(--ink)]">v1 Pre-Alpha Launch</span>
-                    <span className="font-mono text-[var(--semantic-success)]">October 1, 2026</span>
+                    <span className="font-mono text-[var(--ink)]">October 1, 2026</span>
                   </div>
                   <div className="flex items-center justify-between text-xs">
                     <span className="font-semibold text-[var(--ink)]">Alpha Release</span>
-                    <span className="font-mono text-[var(--text-link)]">October 29, 2026</span>
+                    <span className="font-mono text-[var(--muted)]">October 29, 2026</span>
                   </div>
                 </div>
               </div>
@@ -130,7 +130,7 @@ export default function LioranBastionPage() {
               <ul className="space-y-2.5 text-sm text-[var(--body)]">
                 {product.roadmap.map((item) => (
                   <li key={item} className="flex items-start gap-2">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--text-link)]" />
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--ink)]" />
                     <span>{item}</span>
                   </li>
                 ))}

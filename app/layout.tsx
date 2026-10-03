@@ -97,8 +97,7 @@ export default function RootLayout({
   const themeScript = `
     try {
       var savedTheme = localStorage.getItem('lds-theme');
-      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      if (savedTheme === 'dark') {
         document.documentElement.classList.add('dark');
       } else {
         document.documentElement.classList.remove('dark');

@@ -154,12 +154,6 @@ export default function HomePage() {
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {products.map((product, index) => {
               const Icon = index === 0 ? DatabaseIcon : index === 1 ? ServerIcon : ShieldIcon;
-              const badgeVariant =
-                product.status === "Active development" || product.status === "Pre-alpha live"
-                  ? "success"
-                  : product.status === "Architecture"
-                    ? "warning"
-                    : "accent";
 
               return (
                 <InfoCard
@@ -167,8 +161,8 @@ export default function HomePage() {
                   title={product.name}
                   meta={
                     <div className="flex items-center justify-between">
-                      <span>{product.category}</span>
-                      <Badge variant={badgeVariant}>{product.status}</Badge>
+                      <span className="text-[12px] font-medium text-[var(--muted)]">{product.category}</span>
+                      <Badge variant="default">{product.status}</Badge>
                     </div>
                   }
                   description={product.summary}

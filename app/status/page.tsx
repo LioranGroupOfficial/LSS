@@ -44,14 +44,7 @@ export default function StatusPage() {
               >
                 {entry.name} <span className="text-[11px] text-[var(--muted)]">↗</span>
               </a>,
-              <Badge
-                key={`${entry.name}-status`}
-                variant={
-                  entry.status.includes("Active") || entry.status.includes("maintained")
-                    ? "default"
-                    : "warning"
-                }
-              >
+              <Badge key={`${entry.name}-status`} variant="default">
                 {entry.status}
               </Badge>,
               entry.notes,
