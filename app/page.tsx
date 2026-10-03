@@ -141,7 +141,7 @@ export default function HomePage() {
             <SectionHeading
               eyebrow="Product Portfolio"
               title="Three infrastructure tracks across the LDS ecosystem"
-              description="LioranDB is the active product line today. LioranBastion and Lioran Auth are future infrastructure efforts with their current status stated plainly."
+              description="LioranDB and LioranBastion (Lioran S3) are active product lines. Lioran Auth is under active architecture and research."
             />
             <Link
               href="/products"
@@ -155,7 +155,7 @@ export default function HomePage() {
             {products.map((product, index) => {
               const Icon = index === 0 ? DatabaseIcon : index === 1 ? ServerIcon : ShieldIcon;
               const badgeVariant =
-                product.status === "Active development"
+                product.status === "Active development" || product.status === "Pre-alpha live"
                   ? "success"
                   : product.status === "Architecture"
                     ? "warning"
@@ -227,9 +227,9 @@ export default function HomePage() {
             rows={[
               ["Parent organization", "Lioran Group", "Holds the broader ecosystem and company structure."],
               ["Infrastructure company", "Lioran Developer Solutions", "Builds developer infrastructure and product direction."],
-              ["Current product", "LioranDB", "Database product developed by LDS."],
-              ["Future product", "LioranBastion", "Planned storage infrastructure effort under LDS."],
-              ["Future product", "Lioran Auth", "Planned authentication infrastructure effort under LDS."],
+              ["Database engine", "LioranDB", "Rust database system developed by LDS."],
+              ["Object storage", "LioranBastion (Lioran S3)", "High-performance object storage launched Oct 1, 2026; Alpha planned Oct 29, 2026."],
+              ["Authentication", "Lioran Auth", "Planned authentication infrastructure effort under LDS."],
             ]}
           />
         </Container>
@@ -247,8 +247,8 @@ export default function HomePage() {
               Explore our products, review public development repositories on GitHub, or reach out to discuss collaboration.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-              <ButtonLink href="/products/liorandb" variant="primary">
-                Explore LioranDB
+              <ButtonLink href="/products" variant="primary">
+                Explore Products
               </ButtonLink>
               <ButtonLink href="/contact" variant="secondary">
                 Contact the Team

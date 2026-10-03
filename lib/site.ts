@@ -1,6 +1,8 @@
 export const SITE_URL = "https://lioransolutions.com";
 export const LIORAN_GROUP_URL = "https://lioran.group";
 export const LIORAN_DB_URL = "https://liorandb.com";
+export const LIORAN_S3_URL = "https://liorans3.sbs";
+export const LIORAN_S3_DOCS_URL = "https://docs.liorans3.sbs";
 export const GITHUB_ORG_URL = "https://github.com/LioranGroupOfficial";
 export const DISCORD_URL = "https://discord.gg/WsWWThjPMp";
 export const FOUNDER_PORTFOLIO_URL = "https://swaraj.lioransolutions.com";
@@ -12,7 +14,7 @@ export const CONTACT_EMAIL = "contact@lioransolutions.com";
 export const CAREERS_EMAIL = "careers@lioransolutions.com";
 export const SECURITY_EMAIL = "security@lioransolutions.com";
 export const WEBSITE_VERSION = "v2.0";
-export const LAST_UPDATED = "July 16, 2026";
+export const LAST_UPDATED = "October 4, 2026";
 
 export type AppRoute =
   | "/"
@@ -40,7 +42,7 @@ export type Product = {
   slug: Extract<AppRoute, `/products${string}`>;
   name: string;
   category: string;
-  status: "Active development" | "Architecture" | "Research";
+  status: "Active development" | "Architecture" | "Research" | "Pre-alpha live";
   summary: string;
   audience: string;
   capabilities: string[];
@@ -52,6 +54,7 @@ export const ecosystemLinks = [
   { label: "Lioran Group", href: LIORAN_GROUP_URL },
   { label: "LDS", href: SITE_URL },
   { label: "LioranDB", href: LIORAN_DB_URL },
+  { label: "Lioran S3", href: LIORAN_S3_URL },
   { label: "GitHub", href: GITHUB_ORG_URL },
   { label: "Discord", href: DISCORD_URL },
 ] as const;
@@ -72,7 +75,7 @@ export const products: Product[] = [
       "Repository-led engineering and documentation",
     ],
     detail:
-      "LioranDB is the current flagship product of LDS. The public positioning is product and engineering focused: a database system under active development, not a hosted dashboard wrapped around third-party infrastructure.",
+      "LioranDB is the flagship database product of LDS. The public positioning is product and engineering focused: a database system under active development, not a hosted dashboard wrapped around third-party infrastructure.",
     roadmap: [
       "Reliability testing",
       "Indexing improvements",
@@ -82,25 +85,27 @@ export const products: Product[] = [
   },
   {
     slug: "/products/lioran-bastion",
-    name: "LioranBastion",
-    category: "Storage infrastructure",
-    status: "Architecture",
+    name: "LioranBastion (Lioran S3)",
+    category: "Object storage infrastructure",
+    status: "Pre-alpha live",
     summary:
-      "A planned storage product for object and application asset workflows, intended to extend the LDS infrastructure stack beyond databases.",
-    audience: "Application teams, internal tooling, developer platforms",
+      "High-performance object storage and media engine engineered in Rust with bounded-memory streaming, decoupled RocksDB metadata, and an official TypeScript driver.",
+    audience: "Application teams, media pipelines, backend engineers, SaaS products, developer platforms",
     capabilities: [
-      "Object storage research",
-      "Access and policy planning",
-      "Developer workflow integration",
-      "Ecosystem alignment with LioranDB",
+      "Rust storage engine & bounded streaming (64 KiB–4 MiB buffers)",
+      "Decoupled RocksDB metadata store for bucket configs, quotas & ETags",
+      "Resumable parallel multipart uploads with SHA-256 & CRC32C verification",
+      "5-stage atomic staging and promotion commit protocol",
+      "HMAC-SHA256 expiring signed URLs and role-based access keys",
+      "Official @liorans3/cli and TypeScript/JavaScript streaming driver",
     ],
     detail:
-      "LioranBastion is presented as a future LDS product. The site should explain the problem space, intended users, and research direction without pretending the product is already generally available.",
+      "LioranBastion (also known as Lioran S3) was publicly launched in v1 pre-alpha on October 1, 2026 at liorans3.sbs. The next major milestone is the Alpha release scheduled for October 29, 2026.",
     roadmap: [
-      "Storage architecture research",
-      "Durability and access model design",
-      "Developer API planning",
-      "Ecosystem fit with LDS products",
+      "v1 pre-alpha public release (Launched October 1, 2026)",
+      "Alpha release with expanded driver features (Planned October 29, 2026)",
+      "S3 API compatibility layer extensions",
+      "Cross-region replication & cluster topology",
     ],
   },
   {
@@ -163,17 +168,17 @@ export const engineeringPrinciples = [
 
 export const roadmapGroups = {
   Now: [
+    "Lioran S3 (LioranBastion) v1 pre-alpha live hardening & CLI updates",
     "LioranDB Rust engine development",
     "Reliability testing and recovery work",
     "Indexing and storage improvements",
     "Developer APIs and documentation",
-    "Website and ecosystem consistency",
   ],
   Next: [
+    "Lioran S3 Alpha release (Scheduled October 29, 2026)",
     "Early SaaS pilot exploration",
     "Migration tooling",
     "Observability and hardening",
-    "LioranBastion research",
     "Lioran Auth architecture",
   ],
   Later: [
@@ -199,6 +204,12 @@ export const statusEntries = [
     href: SITE_URL,
   },
   {
+    name: "Lioran S3 (LioranBastion)",
+    status: "v1 Pre-alpha live",
+    notes: "High-performance object storage launched Oct 1, 2026; Alpha release planned Oct 29, 2026.",
+    href: LIORAN_S3_URL,
+  },
+  {
     name: "LioranDB Website",
     status: "External product site",
     notes: "Separate product-facing presence for the LioranDB ecosystem.",
@@ -217,14 +228,23 @@ export const statusEntries = [
     href: DISCORD_URL,
   },
   {
-    name: "Future Infrastructure Products",
+    name: "Lioran Auth",
     status: "Architecture and research",
-    notes: "LioranBastion and Lioran Auth are not publicly launched services.",
+    notes: "Authentication infrastructure product in active research.",
     href: `${SITE_URL}/roadmap`,
   },
 ] as const;
 
 export const changelogEntries = [
+  {
+    date: "2026-10-01",
+    product: "Lioran S3 (LioranBastion)",
+    version: "v1.0-prealpha",
+    summary: "Public launch of Lioran S3 v1 pre-alpha object storage.",
+    details:
+      "Lioran S3 (also known as LioranBastion) launched publicly on https://liorans3.sbs. Features Rust-based storage engine, bounded-memory streaming, decoupled RocksDB metadata, @liorans3/cli, TypeScript driver, and multipart uploads. Alpha release planned for October 29, 2026.",
+    href: LIORAN_S3_URL,
+  },
   {
     date: "2026-07-16",
     product: "LDS Website",
@@ -298,7 +318,7 @@ export const humanSitemapLinks: { href: AppRoute; label: string }[] = [
   { href: "/", label: "Home" },
   { href: "/products", label: "Products" },
   { href: "/products/liorandb", label: "LioranDB" },
-  { href: "/products/lioran-bastion", label: "LioranBastion" },
+  { href: "/products/lioran-bastion", label: "LioranBastion (Lioran S3)" },
   { href: "/products/lioran-auth", label: "Lioran Auth" },
   { href: "/about", label: "About LDS" },
   { href: "/mission", label: "Mission" },

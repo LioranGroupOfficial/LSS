@@ -14,7 +14,7 @@ import {
 export const metadata = createMetadata({
   title: "Products",
   description:
-    "Explore the current and future LDS product portfolio: LioranDB, LioranBastion, and Lioran Auth.",
+    "Explore the current and future LDS product portfolio: LioranDB, LioranBastion (Lioran S3), and Lioran Auth.",
   path: "/products",
 });
 
@@ -24,9 +24,9 @@ export default function ProductsPage() {
       <Section variant="canvas" className="border-b border-[var(--hairline-strong)]">
         <Container>
           <SectionHeading
-            eyebrow="Products"
+            eyebrow="Products & Tracks"
             title="The LDS product portfolio"
-            description="LDS is building a developer-infrastructure stack. The current product line is LioranDB, with storage and authentication tracks under active architecture or research."
+            description="LDS is building an integrated developer-infrastructure stack. The active product lines are LioranDB and LioranBastion (Lioran S3), with authentication infrastructure under research."
           />
         </Container>
       </Section>
@@ -37,7 +37,7 @@ export default function ProductsPage() {
             {products.map((product, index) => {
               const Icon = index === 0 ? DatabaseIcon : index === 1 ? ServerIcon : ShieldIcon;
               const badgeVariant =
-                product.status === "Active development"
+                product.status === "Active development" || product.status === "Pre-alpha live"
                   ? "success"
                   : product.status === "Architecture"
                     ? "warning"

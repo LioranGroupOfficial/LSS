@@ -76,21 +76,26 @@ export function SectionHeading({
 
 type BadgeProps = {
   children: ReactNode;
-  variant?: "default" | "success" | "warning" | "accent";
+  variant?: "default" | "subtle" | "active";
   className?: string;
 };
 
+/**
+ * Restrained, editorial badge conforming directly to DESIGN.md:
+ * Background: {colors.surface-strong}, Text: {colors.ink}, 11px uppercase tracking.
+ * Zero neon/greenish AI-style badges.
+ */
 export function Badge({ children, variant = "default", className = "" }: BadgeProps) {
-  const colorMap = {
-    default: "bg-[var(--surface-strong)] text-[var(--ink)] border-[var(--hairline-strong)]",
-    success: "bg-[#16a34a]/10 text-[var(--semantic-success)] border-[#16a34a]/30",
-    warning: "bg-[#ab6400]/10 text-[var(--accent-warning)] border-[#ab6400]/30",
-    accent: "bg-[#8145b5]/10 text-[var(--accent-preview)] border-[#8145b5]/30",
-  };
+  const variantStyles =
+    variant === "subtle"
+      ? "bg-transparent text-[var(--body)] border-[var(--hairline-strong)]"
+      : variant === "active"
+        ? "bg-[var(--ink)] text-[var(--canvas)] border-[var(--ink)]"
+        : "bg-[var(--surface-strong)] text-[var(--ink)] border-[var(--hairline-strong)]";
 
   return (
     <span
-      className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-[0.88px] ${colorMap[variant]} ${className}`.trim()}
+      className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-[0.88px] ${variantStyles} ${className}`.trim()}
     >
       {children}
     </span>
@@ -266,27 +271,39 @@ export function CodeBlock({ label, code, language = "TypeScript" }: CodeBlockPro
     }
   };
 
-  // Basic syntax colorizer for solid, colorful developer surfaces without gradients
   const formatCodeLine = (line: string, lineIndex: number) => {
-    // Quick token parsing for clean visual presentation
-    if (line.startsWith("//")) {
-      return <span key={lineIndex} className="text-[#717888]">{line}</span>;
+    if (line.startsWith("//") || line.startsWith("#")) {
+      return <span key={lineIndex} className="text-[#8890a0]">{line}</span>;
     }
-    if (line.startsWith("import ") || line.startsWith("export ") || line.startsWith("const ") || line.startsWith("await ") || line.startsWith("new ")) {
+    if (
+      line.startsWith("import ") ||
+      line.startsWith("export ") ||
+      line.startsWith("const ") ||
+      line.startsWith("await ") ||
+      line.startsWith("new ")
+    ) {
       return (
         <span key={lineIndex}>
-          {line.split(/(\bimport\b|\bfrom\b|\bconst\b|\bnew\b|\bawait\b|\bexport\b|"[^"]*"|'[^']*')/g).map((token, i) => {
-            if (["import", "from", "const", "new", "await", "export"].includes(token)) {
-              return <span key={i} className="text-[#ec4899] font-medium">{token}</span>;
-            }
-            if (token.startsWith('"') || token.startsWith("'")) {
-              return <span key={i} className="text-[#38bdf8]">{token}</span>;
-            }
-            if (token.includes("LioranManager") || token.includes("database")) {
-              return <span key={i} className="text-[#a78bfa]">{token}</span>;
-            }
-            return <span key={i} className="text-[#e2e8f0]">{token}</span>;
-          })}
+          {line
+            .split(/(\bimport\b|\bfrom\b|\bconst\b|\bnew\b|\bawait\b|\bexport\b|"[^"]*"|'[^']*')/g)
+            .map((token, i) => {
+              if (["import", "from", "const", "new", "await", "export"].includes(token)) {
+                return <span key={i} className="text-[#f43f5e] font-medium">{token}</span>;
+              }
+              if (token.startsWith('"') || token.startsWith("'")) {
+                return <span key={i} className="text-[#38bdf8]">{token}</span>;
+              }
+              if (
+                token.includes("LioranManager") ||
+                token.includes("BastionClient") ||
+                token.includes("database") ||
+                token.includes("client") ||
+                token.includes("bucket")
+              ) {
+                return <span key={i} className="text-[#a78bfa]">{token}</span>;
+              }
+              return <span key={i} className="text-[#e2e8f0]">{token}</span>;
+            })}
         </span>
       );
     }
@@ -300,7 +317,13 @@ export function CodeBlock({ label, code, language = "TypeScript" }: CodeBlockPro
           if (/^\d+$/.test(token) || ["true", "false"].includes(token)) {
             return <span key={i} className="text-[#f59e0b]">{token}</span>;
           }
-          if (token.includes("connect") || token.includes("insert")) {
+          if (
+            token.includes("connect") ||
+            token.includes("insert") ||
+            token.includes("uploadMultipart") ||
+            token.includes("configure") ||
+            token.includes("create")
+          ) {
             return <span key={i} className="text-[#34d399]">{token}</span>;
           }
           return <span key={i} className="text-[#e2e8f0]">{token}</span>;
@@ -312,7 +335,7 @@ export function CodeBlock({ label, code, language = "TypeScript" }: CodeBlockPro
   const lines = code.trim().split("\n");
 
   return (
-    <div className="overflow-hidden rounded-[12px] border border-[#2b2f3a] bg-[#171717] shadow-lg">
+    <div className="overflow-hidden rounded-[12px] border border-[#2b2f3a] bg-[#171717] shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
       <div className="flex items-center justify-between border-b border-[#26282e] bg-[#1a1a1a] px-4 py-2.5">
         <div className="flex items-center gap-2">
           <span className="h-2.5 w-2.5 rounded-full bg-[#ef4444]/80" />
