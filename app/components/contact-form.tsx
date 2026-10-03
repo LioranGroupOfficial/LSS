@@ -59,7 +59,7 @@ export function ContactForm() {
       }
 
       setStatus("success");
-      setFeedback(result.message ?? "Your message has been recorded.");
+      setFeedback(result.message ?? "Your message has been received. We will respond promptly.");
       setForm(initialState);
     } catch {
       setStatus("error");
@@ -68,9 +68,9 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-5">
-      <div className="grid gap-5 md:grid-cols-2">
-        <FormField label="Full name" htmlFor="name" description="Required for follow-up.">
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="grid gap-6 sm:grid-cols-2">
+        <FormField label="Full name" htmlFor="name" description="Required for follow-up">
           <input
             id="name"
             name="name"
@@ -79,10 +79,11 @@ export function ContactForm() {
             required
             value={form.name}
             onChange={(event) => updateField("name", event.target.value)}
-            className="h-11 rounded-[5px] border border-[var(--border-color)] bg-[var(--background-primary)] px-4 text-sm text-[var(--text-primary)]"
+            className="h-11 w-full rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] px-3.5 text-sm text-[var(--ink)] placeholder-[var(--muted)] transition-colors focus:border-[var(--ink)] focus:outline-none focus:ring-1 focus:ring-[var(--ink)]"
+            placeholder="Ada Lovelace"
           />
         </FormField>
-        <FormField label="Email" htmlFor="email" description="Required for a reply.">
+        <FormField label="Work email" htmlFor="email" description="Where we can reach you">
           <input
             id="email"
             name="email"
@@ -91,13 +92,14 @@ export function ContactForm() {
             required
             value={form.email}
             onChange={(event) => updateField("email", event.target.value)}
-            className="h-11 rounded-[5px] border border-[var(--border-color)] bg-[var(--background-primary)] px-4 text-sm text-[var(--text-primary)]"
+            className="h-11 w-full rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] px-3.5 text-sm text-[var(--ink)] placeholder-[var(--muted)] transition-colors focus:border-[var(--ink)] focus:outline-none focus:ring-1 focus:ring-[var(--ink)]"
+            placeholder="ada@company.com"
           />
         </FormField>
       </div>
 
-      <div className="grid gap-5 md:grid-cols-2">
-        <FormField label="Company or project" htmlFor="company" description="Optional context.">
+      <div className="grid gap-6 sm:grid-cols-2">
+        <FormField label="Company or project" htmlFor="company" description="Optional context">
           <input
             id="company"
             name="company"
@@ -105,16 +107,17 @@ export function ContactForm() {
             autoComplete="organization"
             value={form.company}
             onChange={(event) => updateField("company", event.target.value)}
-            className="h-11 rounded-[5px] border border-[var(--border-color)] bg-[var(--background-primary)] px-4 text-sm text-[var(--text-primary)]"
+            className="h-11 w-full rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] px-3.5 text-sm text-[var(--ink)] placeholder-[var(--muted)] transition-colors focus:border-[var(--ink)] focus:outline-none focus:ring-1 focus:ring-[var(--ink)]"
+            placeholder="Acme Corp"
           />
         </FormField>
-        <FormField label="Inquiry type" htmlFor="topic" description="Choose the closest category.">
+        <FormField label="Inquiry category" htmlFor="topic" description="Select the closest subject">
           <select
             id="topic"
             name="topic"
             value={form.topic}
             onChange={(event) => updateField("topic", event.target.value)}
-            className="h-11 rounded-[5px] border border-[var(--border-color)] bg-[var(--background-primary)] px-4 text-sm text-[var(--text-primary)]"
+            className="h-11 w-full rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] px-3.5 text-sm text-[var(--ink)] transition-colors focus:border-[var(--ink)] focus:outline-none focus:ring-1 focus:ring-[var(--ink)]"
           >
             {topics.map((topic) => (
               <option key={topic} value={topic}>
@@ -128,43 +131,44 @@ export function ContactForm() {
       <FormField
         label="Message"
         htmlFor="message"
-        description="Include the product, context, and any technical requirements."
+        description="Include product, workload, or technical context"
       >
         <textarea
           id="message"
           name="message"
-          rows={6}
+          rows={5}
           required
           value={form.message}
           onChange={(event) => updateField("message", event.target.value)}
-          className="rounded-[5px] border border-[var(--border-color)] bg-[var(--background-primary)] px-4 py-3 text-sm leading-7 text-[var(--text-primary)]"
+          className="w-full rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] p-3.5 text-sm leading-relaxed text-[var(--ink)] placeholder-[var(--muted)] transition-colors focus:border-[var(--ink)] focus:outline-none focus:ring-1 focus:ring-[var(--ink)]"
+          placeholder="Describe what you are building or exploring..."
         />
       </FormField>
 
-      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <p className="text-sm text-[var(--text-muted)]">
-          Submissions are stored only when the backend request succeeds.
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between pt-2">
+        <p className="text-xs text-[var(--muted)]">
+          Submissions are directly routed to the LDS engineering and founder desk.
         </p>
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="inline-flex h-[42px] items-center justify-center rounded-[5px] border border-[var(--accent)] bg-[var(--accent)] px-5 text-sm font-semibold text-[var(--background-primary)] disabled:opacity-60"
+          className="inline-flex h-10 items-center justify-center rounded-[8px] bg-[var(--primary)] px-6 text-sm font-medium text-[var(--on-primary)] transition-colors hover:bg-[var(--primary-active)] disabled:opacity-60"
         >
-          {status === "submitting" ? "Submitting..." : "Submit"}
+          {status === "submitting" ? "Sending..." : "Submit Message"}
         </button>
       </div>
 
       {feedback ? (
-        <p
+        <div
           role="status"
-          className={`rounded-[5px] border px-4 py-3 text-sm ${
+          className={`rounded-[8px] border p-4 text-sm ${
             status === "success"
-              ? "border-[var(--accent)] bg-[rgba(148,137,121,0.12)] text-[var(--text-primary)]"
-              : "border-[var(--border-color)] bg-[var(--background-secondary)] text-[var(--text-primary)]"
+              ? "border-[#16a34a]/30 bg-[#16a34a]/10 text-[var(--semantic-success)]"
+              : "border-[#eb8e90]/30 bg-[#eb8e90]/10 text-[var(--semantic-error)]"
           }`}
         >
           {feedback}
-        </p>
+        </div>
       ) : null}
     </form>
   );
@@ -182,10 +186,14 @@ function FormField({
   children: React.ReactNode;
 }) {
   return (
-    <label htmlFor={htmlFor} className="grid gap-2">
-      <span className="text-sm font-medium text-[var(--text-primary)]">{label}</span>
-      <span className="text-sm text-[var(--text-subtle)]">{description}</span>
+    <div className="space-y-1.5">
+      <div className="flex items-center justify-between">
+        <label htmlFor={htmlFor} className="text-sm font-medium text-[var(--ink)]">
+          {label}
+        </label>
+        <span className="text-[11px] text-[var(--muted)]">{description}</span>
+      </div>
       {children}
-    </label>
+    </div>
   );
 }

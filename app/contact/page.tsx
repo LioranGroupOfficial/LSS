@@ -1,69 +1,99 @@
 import { createMetadata } from "@/lib/metadata";
-import {
-  CONTACT_EMAIL,
-  DISCORD_URL,
-  FOUNDER_PORTFOLIO_URL,
-  GITHUB_ORG_URL,
-  LIORAN_GROUP_URL,
-  SECURITY_EMAIL,
-  SITE_URL,
-} from "@/lib/site";
+import { CAREERS_EMAIL, CONTACT_EMAIL, DISCORD_URL, GITHUB_ORG_URL, SECURITY_EMAIL } from "@/lib/site";
 import { ContactForm } from "../components/contact-form";
 import { PageShell } from "../components/page-shell";
-import { Container, InfoCard, Section, SectionHeading } from "../components/site-ui";
+import {
+  Container,
+  InfoCard,
+  Section,
+  SectionHeading,
+} from "../components/site-ui";
 
 export const metadata = createMetadata({
   title: "Contact",
   description:
-    "Contact Lioran Developer Solutions for product inquiries, early access, technical collaboration, careers, or security disclosures.",
+    "Contact Lioran Developer Solutions for product inquiries, developer collaboration, careers, or security disclosures.",
   path: "/contact",
 });
-
-const cards = [
-  ["Product inquiries", CONTACT_EMAIL],
-  ["LioranDB early access", CONTACT_EMAIL],
-  ["Technical collaboration", CONTACT_EMAIL],
-  ["Infrastructure partnerships", CONTACT_EMAIL],
-  ["Careers", "careers@lioransolutions.com"],
-  ["Security disclosure", SECURITY_EMAIL],
-  ["Media", CONTACT_EMAIL],
-  ["General inquiries", CONTACT_EMAIL],
-] as const;
 
 export default function ContactPage() {
   return (
     <PageShell>
-      <Section>
+      <Section variant="canvas" className="border-b border-[var(--hairline-strong)]">
         <Container>
           <SectionHeading
-            eyebrow="Contact"
-            title="Talk to Lioran Developer Solutions"
-            description="Use the form for product and engineering conversations. The page only claims successful delivery when the backend confirms the submission."
+            eyebrow="Contact & Collaboration"
+            title="Get in touch with the LDS team"
+            description="Whether you have an infrastructure requirement, want early access to LioranDB, or wish to collaborate on developer systems in India, use the form below or our direct desks."
           />
-          <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-            <div className="grid gap-6">
-              <InfoCard title="Contact categories">
-                <ul className="space-y-3 text-sm text-[var(--text-muted)]">
-                  {cards.map(([label, email]) => (
-                    <li key={label}>
-                      <strong className="text-[var(--text-primary)]">{label}:</strong> {email}
-                    </li>
-                  ))}
-                </ul>
-              </InfoCard>
-              <InfoCard title="Reference links">
-                <ul className="space-y-3 text-sm text-[var(--text-muted)]">
-                  <li><a href={SITE_URL} target="_blank" rel="noopener noreferrer">LDS website</a></li>
-                  <li><a href={LIORAN_GROUP_URL} target="_blank" rel="noopener noreferrer">Lioran Group</a></li>
-                  <li><a href={GITHUB_ORG_URL} target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                  <li><a href={DISCORD_URL} target="_blank" rel="noopener noreferrer">Discord</a></li>
-                  <li><a href={FOUNDER_PORTFOLIO_URL} target="_blank" rel="noopener noreferrer">Founder portfolio</a></li>
-                  <li><a href="/security">Security page</a></li>
-                </ul>
-              </InfoCard>
-            </div>
-            <div className="rounded-[6px] border border-[var(--border-color)] bg-[var(--background-secondary)] p-6">
+        </Container>
+      </Section>
+
+      <Section variant="soft">
+        <Container>
+          <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
+            {/* Contact Form */}
+            <div className="rounded-[12px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] p-6 sm:p-8 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+              <h2 className="mb-6 text-lg font-semibold text-[var(--ink)]">Send a Direct Message</h2>
               <ContactForm />
+            </div>
+
+            {/* Direct Communication Channels */}
+            <div className="space-y-6">
+              <InfoCard title="Direct Email Channels">
+                <ul className="space-y-3 text-sm">
+                  <li>
+                    <span className="block text-xs font-semibold uppercase tracking-wider text-[var(--muted)]">
+                      General & Product
+                    </span>
+                    <a href={`mailto:${CONTACT_EMAIL}`} className="text-sm font-medium text-[var(--ink)] hover:underline">
+                      {CONTACT_EMAIL}
+                    </a>
+                  </li>
+                  <li>
+                    <span className="block text-xs font-semibold uppercase tracking-wider text-[var(--muted)]">
+                      Careers & Internships
+                    </span>
+                    <a href={`mailto:${CAREERS_EMAIL}`} className="text-sm font-medium text-[var(--ink)] hover:underline">
+                      {CAREERS_EMAIL}
+                    </a>
+                  </li>
+                  <li>
+                    <span className="block text-xs font-semibold uppercase tracking-wider text-[var(--muted)]">
+                      Security & Disclosures
+                    </span>
+                    <a href={`mailto:${SECURITY_EMAIL}`} className="text-sm font-medium text-[var(--ink)] hover:underline">
+                      {SECURITY_EMAIL}
+                    </a>
+                  </li>
+                </ul>
+              </InfoCard>
+
+              <InfoCard title="Developer Community & Code">
+                <p className="text-xs leading-relaxed text-[var(--body)]">
+                  For bug reports, feature discussions, and technical issues, consider reaching us via our public community channels.
+                </p>
+                <div className="mt-4 flex flex-col gap-2">
+                  <a
+                    href={GITHUB_ORG_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--canvas-soft)] p-3 text-xs font-medium text-[var(--ink)] transition-colors hover:bg-[var(--surface-strong)]"
+                  >
+                    <span>GitHub Issues & Repositories</span>
+                    <span className="text-[var(--muted)]">↗</span>
+                  </a>
+                  <a
+                    href={DISCORD_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--canvas-soft)] p-3 text-xs font-medium text-[var(--ink)] transition-colors hover:bg-[var(--surface-strong)]"
+                  >
+                    <span>Discord Developer Server</span>
+                    <span className="text-[var(--muted)]">↗</span>
+                  </a>
+                </div>
+              </InfoCard>
             </div>
           </div>
         </Container>

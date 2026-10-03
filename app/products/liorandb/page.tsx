@@ -1,7 +1,15 @@
 import { createMetadata } from "@/lib/metadata";
-import { LIORAN_DB_URL, products } from "@/lib/site";
+import { GITHUB_ORG_URL, LIORAN_DB_URL, products } from "@/lib/site";
 import { PageShell } from "../../components/page-shell";
-import { ButtonLink, Container, InfoCard, Section, SectionHeading } from "../../components/site-ui";
+import {
+  Badge,
+  ButtonLink,
+  CodeBlock,
+  Container,
+  InfoCard,
+  Section,
+  SectionHeading,
+} from "../../components/site-ui";
 
 const product = products[0];
 
@@ -12,38 +20,93 @@ export const metadata = createMetadata({
   path: product.slug,
 });
 
+const sampleCode = `import { LioranManager } from "@liorandb/core";
+
+// Connect to LioranDB Rust storage engine
+const db = new LioranManager({
+  rootPath: "./var/liorandb",
+  databaseName: "app_production",
+});
+
+await db.connect();
+
+// Perform transactional record operations
+await db.insert("users", {
+  uid: "usr_99812",
+  email: "dev@company.in",
+  created_at: Date.now(),
+});`;
+
 export default function LioranDbPage() {
   return (
     <PageShell>
-      <Section>
+      {/* Header Band */}
+      <Section variant="canvas" className="border-b border-[var(--hairline-strong)]">
         <Container>
-          <SectionHeading
-            eyebrow="LioranDB"
-            title="Database infrastructure under active development"
-            description={product.summary}
-          />
-          <div className="mt-8 flex flex-wrap gap-4">
-            <ButtonLink href={LIORAN_DB_URL} external>
-              Visit LioranDB
-            </ButtonLink>
-            <ButtonLink href="/contact" variant="secondary">
-              Contact LDS
-            </ButtonLink>
+          <div className="space-y-6">
+            <div className="flex flex-wrap items-center gap-2">
+              <Badge variant="success">Active Development</Badge>
+              <span className="text-xs text-[var(--muted)]">{product.category}</span>
+            </div>
+
+            <SectionHeading
+              eyebrow="Flagship Database Product"
+              title="LioranDB"
+              description={product.summary}
+            />
+
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <ButtonLink href={LIORAN_DB_URL} variant="primary" external>
+                Visit LioranDB Site
+              </ButtonLink>
+              <ButtonLink href={GITHUB_ORG_URL} variant="secondary" external>
+                View GitHub Repositories
+              </ButtonLink>
+              <ButtonLink href="/contact" variant="secondary">
+                Contact LDS Team
+              </ButtonLink>
+            </div>
           </div>
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            <InfoCard title="Intended users" description={product.audience} />
-            <InfoCard title="Current status" description={product.detail} />
-            <InfoCard title="Planned capabilities">
-              <ul className="space-y-3 text-sm text-[var(--text-muted)]">
+        </Container>
+      </Section>
+
+      {/* Code & Architectural Detail */}
+      <Section variant="soft">
+        <Container>
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
+            <div className="space-y-6">
+              <InfoCard title="Current Status & Positioning" description={product.detail} />
+              <InfoCard title="Intended Users & Workloads" description={product.audience} />
+            </div>
+            <div>
+              <CodeBlock label="LioranDB Node.js SDK" code={sampleCode} language="TypeScript" />
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Capabilities and Roadmap Grid */}
+      <Section variant="canvas">
+        <Container>
+          <div className="grid gap-8 lg:grid-cols-2">
+            <InfoCard title="Planned Capabilities">
+              <ul className="space-y-2.5 text-sm text-[var(--body)]">
                 {product.capabilities.map((item) => (
-                  <li key={item}>{item}</li>
+                  <li key={item} className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--ink)]" />
+                    <span>{item}</span>
+                  </li>
                 ))}
               </ul>
             </InfoCard>
-            <InfoCard title="Near-term roadmap">
-              <ul className="space-y-3 text-sm text-[var(--text-muted)]">
+
+            <InfoCard title="Near-Term Roadmap">
+              <ul className="space-y-2.5 text-sm text-[var(--body)]">
                 {product.roadmap.map((item) => (
-                  <li key={item}>{item}</li>
+                  <li key={item} className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--text-link)]" />
+                    <span>{item}</span>
+                  </li>
                 ))}
               </ul>
             </InfoCard>

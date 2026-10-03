@@ -1,7 +1,13 @@
 import { createMetadata } from "@/lib/metadata";
 import { changelogEntries } from "@/lib/site";
 import { PageShell } from "../components/page-shell";
-import { Container, InfoCard, Section, SectionHeading } from "../components/site-ui";
+import {
+  Badge,
+  Container,
+  InfoCard,
+  Section,
+  SectionHeading,
+} from "../components/site-ui";
 
 export const metadata = createMetadata({
   title: "Changelog",
@@ -13,22 +19,36 @@ export const metadata = createMetadata({
 export default function ChangelogPage() {
   return (
     <PageShell>
-      <Section>
+      <Section variant="canvas" className="border-b border-[var(--hairline-strong)]">
         <Container>
           <SectionHeading
-            eyebrow="Changelog"
-            title="Public updates"
+            eyebrow="Releases & Updates"
+            title="Public changelog"
             description="The changelog starts with the website redesign entry and avoids invented product release history."
           />
-          <div className="mt-10 grid gap-6">
+        </Container>
+      </Section>
+
+      <Section variant="soft">
+        <Container>
+          <div className="mx-auto max-w-3xl space-y-8">
             {changelogEntries.map((entry) => (
               <InfoCard
                 key={`${entry.product}-${entry.date}`}
-                title={`${entry.product} • ${entry.version}`}
-                meta={entry.date}
-                description={entry.summary}
+                title={entry.summary}
+                meta={
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-xs font-semibold text-[var(--ink)]">
+                      {entry.date}
+                    </span>
+                    <Badge variant="default">{entry.version}</Badge>
+                    <span className="text-xs text-[var(--muted)]">{entry.product}</span>
+                  </div>
+                }
               >
-                <p className="text-sm text-[var(--text-muted)]">{entry.details}</p>
+                <div className="border-t border-[var(--hairline)] pt-3">
+                  <p className="text-sm leading-relaxed text-[var(--body)]">{entry.details}</p>
+                </div>
               </InfoCard>
             ))}
           </div>

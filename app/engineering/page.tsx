@@ -1,7 +1,14 @@
 import { createMetadata } from "@/lib/metadata";
 import { engineeringPrinciples } from "@/lib/site";
+import { CodeIcon, ShieldIcon, TerminalIcon } from "../components/icons";
 import { PageShell } from "../components/page-shell";
-import { Container, InfoCard, Section, SectionHeading, TechnicalTable } from "../components/site-ui";
+import {
+  Container,
+  InfoCard,
+  Section,
+  SectionHeading,
+  TechnicalTable,
+} from "../components/site-ui";
 
 export const metadata = createMetadata({
   title: "Engineering",
@@ -13,26 +20,39 @@ export const metadata = createMetadata({
 export default function EngineeringPage() {
   return (
     <PageShell>
-      <Section>
+      <Section variant="canvas" className="border-b border-[var(--hairline-strong)]">
         <Container>
           <SectionHeading
             eyebrow="Engineering"
             title="Technical standards before marketing claims"
             description="LDS communicates through source code, documentation, product boundaries, and operational trade-offs. The public website follows the same philosophy."
           />
-          <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {engineeringPrinciples.map((principle) => (
-              <InfoCard
-                key={principle.title}
-                title={principle.title}
-                description={principle.description}
-              />
-            ))}
+        </Container>
+      </Section>
+
+      <Section variant="soft">
+        <Container>
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {engineeringPrinciples.map((principle, index) => {
+              const Icon =
+                index % 3 === 0 ? CodeIcon : index % 3 === 1 ? TerminalIcon : ShieldIcon;
+              return (
+                <InfoCard
+                  key={principle.title}
+                  title={principle.title}
+                  description={principle.description}
+                >
+                  <div className="inline-flex h-8 w-8 items-center justify-center rounded-[6px] border border-[var(--hairline-strong)] bg-[var(--surface-strong)] text-[var(--ink)]">
+                    <Icon className="h-4 w-4" />
+                  </div>
+                </InfoCard>
+              );
+            })}
           </div>
         </Container>
       </Section>
 
-      <Section className="border-t border-[var(--border-color)]">
+      <Section variant="canvas">
         <Container>
           <TechnicalTable
             caption="Technical standards represented on the site"

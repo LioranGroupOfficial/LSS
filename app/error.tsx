@@ -15,24 +15,29 @@ export default function Error({
   }, [error]);
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-[1180px] flex-col items-start justify-center gap-6 px-4 py-16 text-[var(--text-primary)] sm:px-6 lg:px-8">
-      <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[var(--accent)]">
-        Error
+    <main className="mx-auto flex min-h-[70vh] max-w-[1200px] flex-col items-center justify-center gap-6 px-4 py-16 text-center sm:px-6 lg:px-8">
+      <span className="inline-flex rounded-full border border-[var(--semantic-error)]/30 bg-[var(--semantic-error)]/10 px-3 py-1 font-mono text-xs font-semibold uppercase tracking-wider text-[var(--semantic-error)]">
+        Application Error
+      </span>
+      <h1 className="text-3xl font-semibold tracking-tight text-[var(--ink)] sm:text-4xl">
+        Something went wrong.
+      </h1>
+      <p className="max-w-[50ch] text-base leading-relaxed text-[var(--body)]">
+        The page could not be rendered successfully. You can retry the operation or return to a stable route.
       </p>
-      <h1 className="text-4xl font-semibold tracking-[-0.04em]">Something went wrong.</h1>
-      <p className="max-w-[60ch] text-base leading-7 text-[var(--text-muted)]">
-        The page could not be rendered successfully. You can retry or return to a stable route.
-      </p>
-      <div className="flex flex-wrap gap-4">
+      <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
         <button
           type="button"
           onClick={reset}
-          className="inline-flex h-[42px] items-center justify-center rounded-[5px] border border-[var(--accent)] bg-[var(--accent)] px-5 text-sm font-semibold text-[var(--background-primary)]"
+          className="inline-flex h-10 items-center justify-center rounded-[8px] bg-[var(--primary)] px-5 text-sm font-medium text-[var(--on-primary)] transition-colors hover:bg-[var(--primary-active)]"
         >
-          Retry
+          Try Again
         </button>
-        <Link href="/" className="inline-flex h-[42px] items-center justify-center rounded-[5px] border border-[var(--accent)] px-5 text-sm font-semibold text-[var(--text-primary)]">
-          Go home
+        <Link
+          href="/"
+          className="inline-flex h-10 items-center justify-center rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] px-5 text-sm font-medium text-[var(--ink)] transition-colors hover:bg-[var(--surface-strong)]"
+        >
+          Return Home
         </Link>
       </div>
     </main>

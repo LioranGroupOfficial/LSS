@@ -1,7 +1,13 @@
 import { createMetadata } from "@/lib/metadata";
 import { statusEntries } from "@/lib/site";
 import { PageShell } from "../components/page-shell";
-import { Container, Section, SectionHeading, TechnicalTable } from "../components/site-ui";
+import {
+  Badge,
+  Container,
+  Section,
+  SectionHeading,
+  TechnicalTable,
+} from "../components/site-ui";
 
 export const metadata = createMetadata({
   title: "Status",
@@ -13,26 +19,44 @@ export const metadata = createMetadata({
 export default function StatusPage() {
   return (
     <PageShell>
-      <Section>
+      <Section variant="canvas" className="border-b border-[var(--hairline-strong)]">
         <Container>
           <SectionHeading
-            eyebrow="Status"
+            eyebrow="System & Service Overview"
             title="Manually maintained service overview"
             description="This page is a service directory and status overview. It does not publish uptime percentages or incident history without real monitoring data."
           />
-          <div className="mt-10">
-            <TechnicalTable
-              caption="Public services and references"
-              headers={["Service", "Status", "Notes"]}
-              rows={statusEntries.map((entry) => [
-                <a key={entry.href} href={entry.href} target="_blank" rel="noopener noreferrer">
-                  {entry.name}
-                </a>,
-                entry.status,
-                entry.notes,
-              ])}
-            />
-          </div>
+        </Container>
+      </Section>
+
+      <Section variant="soft">
+        <Container>
+          <TechnicalTable
+            caption="Public services, development surfaces and status"
+            headers={["Service / Platform", "Operational Status", "Engineering Notes"]}
+            rows={statusEntries.map((entry) => [
+              <a
+                key={entry.href}
+                href={entry.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-[var(--ink)] underline-offset-4 hover:underline"
+              >
+                {entry.name} <span className="text-[11px] text-[var(--muted)]">↗</span>
+              </a>,
+              <Badge
+                key={`${entry.name}-status`}
+                variant={
+                  entry.status.includes("Active") || entry.status.includes("maintained")
+                    ? "default"
+                    : "warning"
+                }
+              >
+                {entry.status}
+              </Badge>,
+              entry.notes,
+            ])}
+          />
         </Container>
       </Section>
     </PageShell>

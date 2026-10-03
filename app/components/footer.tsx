@@ -7,12 +7,13 @@ import {
   SITE_URL,
   WEBSITE_VERSION,
 } from "@/lib/site";
-import { GitHubIcon, LinkIcon } from "./icons";
+import { GitHubIcon } from "./icons";
 
-const groups = [
+const linkGroups = [
   {
     title: "Products",
     links: [
+      { href: "/products", label: "Overview" },
       { href: "/products/liorandb", label: "LioranDB" },
       { href: "/products/lioran-bastion", label: "LioranBastion" },
       { href: "/products/lioran-auth", label: "Lioran Auth" },
@@ -22,7 +23,7 @@ const groups = [
   {
     title: "Company",
     links: [
-      { href: "/about", label: "About" },
+      { href: "/about", label: "About LDS" },
       { href: "/mission", label: "Mission" },
       { href: "/engineering", label: "Engineering" },
       { href: "/founder", label: "Founder" },
@@ -31,12 +32,21 @@ const groups = [
     ],
   },
   {
+    title: "Resources",
+    links: [
+      { href: "/status", label: "Status" },
+      { href: "/security", label: "Security" },
+      { href: "/changelog", label: "Changelog" },
+      { href: "/brand", label: "Brand Assets" },
+      { href: "/sitemap", label: "Sitemap" },
+    ],
+  },
+  {
     title: "Legal",
     links: [
-      { href: "/privacy", label: "Privacy" },
-      { href: "/terms", label: "Terms" },
-      { href: "/license", label: "License" },
-      { href: "/sitemap", label: "Sitemap" },
+      { href: "/privacy", label: "Privacy Policy" },
+      { href: "/terms", label: "Terms of Use" },
+      { href: "/license", label: "Licensing" },
     ],
   },
 ] as const;
@@ -52,65 +62,85 @@ const ecosystem = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-[var(--border-color)] bg-[rgba(34,40,49,0.98)]">
-      <div className="mx-auto grid max-w-[1180px] gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.2fr_repeat(3,minmax(0,1fr))] lg:px-8">
-        <div className="space-y-4">
-          <div>
-            <p className="text-lg font-semibold text-[var(--text-primary)]">Lioran Developer Solutions</p>
-            <p className="mt-2 max-w-[32ch] text-sm leading-7 text-[var(--text-muted)]">
-              Developer infrastructure, built in India. LDS is the infrastructure
-              company under Lioran Group.
+    <footer className="border-t border-[var(--hairline-strong)] bg-[var(--canvas)] text-[var(--body)]">
+      <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid gap-10 lg:grid-cols-[1.5fr_repeat(4,minmax(0,1fr))]">
+          {/* Brand Column */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-strong)] text-[12px] font-bold text-[var(--ink)]">
+                LDS
+              </span>
+              <span className="text-sm font-semibold tracking-[-0.2px] text-[var(--ink)]">
+                Lioran Developer Solutions
+              </span>
+            </div>
+            <p className="max-w-[34ch] text-sm leading-relaxed text-[var(--body)]">
+              Developer infrastructure, built in India. LDS builds databases, storage systems, and backend platforms for Indian products and global engineers.
             </p>
+            <p className="text-xs font-medium text-[var(--muted)]">
+              A company under <a href={LIORAN_GROUP_URL} target="_blank" rel="noopener noreferrer" className="text-[var(--ink)] hover:underline">Lioran Group</a>
+            </p>
+            <div className="flex flex-wrap gap-2 pt-2">
+              {ecosystem.slice(0, 4).map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center rounded-[6px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] px-2.5 py-1 text-xs font-medium text-[var(--body)] transition-colors hover:bg-[var(--surface-strong)] hover:text-[var(--ink)]"
+                >
+                  {link.label}
+                  <span className="ml-1 text-[10px] text-[var(--muted)]">↗</span>
+                </a>
+              ))}
+            </div>
           </div>
-          <p className="text-sm text-[var(--text-muted)]">A Lioran Group company</p>
-          <div className="flex flex-wrap gap-3 text-sm">
-            {ecosystem.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-[5px] border border-[var(--border-color)] px-3 py-2 text-[var(--text-muted)] transition-colors duration-150 hover:bg-[var(--background-secondary)] hover:text-[var(--text-primary)]"
-              >
-                <LinkIcon className="h-4 w-4 shrink-0" />
-                <span>{link.label}</span>
-              </a>
-            ))}
-          </div>
+
+          {/* Navigation Columns */}
+          {linkGroups.map((group) => (
+            <div key={group.title} className="space-y-3">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.88px] text-[var(--muted)]">
+                {group.title}
+              </p>
+              <ul className="space-y-2.5 text-sm">
+                {group.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-[var(--body)] transition-colors hover:text-[var(--ink)]"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        {groups.map((group) => (
-          <div key={group.title}>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
-              {group.title}
-            </p>
-            <ul className="mt-4 space-y-3 text-sm text-[var(--text-muted)]">
-              {group.links.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="transition-colors duration-150 hover:text-[var(--text-primary)]"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-
-      <div className="border-t border-[var(--border-color)]">
-        <div className="mx-auto flex max-w-[1180px] flex-col gap-3 px-4 py-4 text-sm text-[var(--text-muted)] sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-          <p>© 2026 Lioran Developer Solutions. Built by Lioran Developer Solutions.</p>
+        {/* Bottom Bar */}
+        <div className="mt-12 flex flex-col gap-4 border-t border-[var(--hairline)] pt-8 text-xs text-[var(--muted)] sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Lioran Developer Solutions. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-4">
-            <span>{WEBSITE_VERSION}</span>
-            <span>A Lioran Group company</span>
-            <a href={GITHUB_ORG_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-[var(--text-primary)]">
-              <GitHubIcon className="h-4 w-4" />
+            <span className="inline-flex items-center rounded-[4px] border border-[var(--hairline-strong)] bg-[var(--surface-strong)] px-1.5 py-0.5 font-mono text-[11px] text-[var(--ink)]">
+              {WEBSITE_VERSION}
+            </span>
+            <a
+              href={GITHUB_ORG_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-[var(--body)] hover:text-[var(--ink)]"
+            >
+              <GitHubIcon className="h-3.5 w-3.5" />
               GitHub
             </a>
-            <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--text-primary)]">
+            <a
+              href={DISCORD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--body)] hover:text-[var(--ink)]"
+            >
               Discord
             </a>
           </div>

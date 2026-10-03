@@ -1,7 +1,14 @@
 import { createMetadata } from "@/lib/metadata";
 import { careers, CAREERS_EMAIL } from "@/lib/site";
 import { PageShell } from "../components/page-shell";
-import { ButtonLink, Container, InfoCard, Section, SectionHeading, TechnicalTable } from "../components/site-ui";
+import {
+  ButtonLink,
+  Container,
+  InfoCard,
+  Section,
+  SectionHeading,
+  TechnicalTable,
+} from "../components/site-ui";
 
 export const metadata = createMetadata({
   title: "Careers",
@@ -13,39 +20,58 @@ export const metadata = createMetadata({
 export default function CareersPage() {
   return (
     <PageShell>
-      <Section>
+      <Section variant="canvas" className="border-b border-[var(--hairline-strong)]">
         <Container>
-          <SectionHeading
-            eyebrow="Careers"
-            title="Careers at Lioran Developer Solutions"
-            description="LDS internships are shown with the scope, commitment, and compensation details visible up front. The internships are unpaid and focused on real developer-infrastructure work."
-          />
-          <div className="mt-8">
-            <ButtonLink href={`mailto:${CAREERS_EMAIL}`} external>
-              Apply by email
-            </ButtonLink>
-          </div>
-          <div className="mt-10">
-            <TechnicalTable
-              caption="Current internship structure"
-              headers={["Field", "Details"]}
-              rows={[
-                ["Duration", "3 months"],
-                ["Daily commitment", "4 hours"],
-                ["Working time", "6:00 PM to 10:00 PM IST"],
-                ["Compensation", "Unpaid"],
-                ["Benefits", "Practical experience, mentorship, certificates, and possible future consideration without guaranteed employment"],
-              ]}
+          <div className="space-y-6">
+            <SectionHeading
+              eyebrow="Careers & Internships"
+              title="Careers at Lioran Developer Solutions"
+              description="LDS internships are shown with the scope, commitment, and compensation details visible up front. The internships are unpaid and focused on real developer-infrastructure work."
             />
+            <div className="pt-2">
+              <ButtonLink href={`mailto:${CAREERS_EMAIL}`} variant="primary" external>
+                Apply via Email ({CAREERS_EMAIL})
+              </ButtonLink>
+            </div>
           </div>
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+        </Container>
+      </Section>
+
+      <Section variant="soft">
+        <Container>
+          <TechnicalTable
+            caption="Current internship structure & terms"
+            headers={["Field", "Details"]}
+            rows={[
+              ["Duration", "3 months"],
+              ["Daily commitment", "4 hours"],
+              ["Working time", "6:00 PM to 10:00 PM IST"],
+              ["Compensation", "Unpaid"],
+              [
+                "Benefits",
+                "Practical experience, mentorship, certificates, and possible future consideration without guaranteed employment",
+              ],
+            ]}
+          />
+
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {careers.map((role) => (
               <InfoCard key={role.title} title={role.title}>
-                <ul className="space-y-3 text-sm text-[var(--text-muted)]">
-                  {role.focus.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
+                <div className="space-y-3">
+                  <p className="text-[11px] font-semibold uppercase tracking-wider text-[var(--muted)]">
+                    Focus Areas & Tech
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {role.focus.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-[6px] border border-[var(--hairline-strong)] bg-[var(--canvas)] px-2 py-1 text-xs text-[var(--ink)]"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </InfoCard>
             ))}
           </div>

@@ -13,19 +13,36 @@ export const metadata = createMetadata({
 export default function LicensePage() {
   return (
     <PageShell>
-      <Section>
+      <Section variant="canvas" className="border-b border-[var(--hairline-strong)]">
         <Container>
           <SectionHeading
-            eyebrow="License"
+            eyebrow="Intellectual Property & Licensing"
             title="Licensing information"
             description="This page describes general licensing context for the website and is not a substitute for product-specific repository licenses."
           />
-          <div className="mt-10 rounded-[6px] border border-[var(--border-color)] bg-[var(--background-secondary)] p-6 text-sm leading-8 text-[var(--text-muted)]">
-            <p className="mb-4 text-[var(--text-primary)]">Last updated: {LAST_UPDATED}</p>
-            <p>1. The website content, branding, and copy remain subject to the rights held by Lioran Developer Solutions and related ecosystem entities where applicable.</p>
-            <p>1.1 Product repositories may use separate licenses that should be reviewed in their respective source repositories.</p>
-            <p>2. Reuse of logos, product names, or brand identity should preserve attribution and avoid misleading association.</p>
-            <p>2.1 When in doubt, contact LDS for clarification before redistribution or commercial reuse.</p>
+        </Container>
+      </Section>
+
+      <Section variant="soft">
+        <Container>
+          <div className="mx-auto max-w-3xl rounded-[12px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] p-6 sm:p-8 text-sm leading-relaxed text-[var(--body)] shadow-[0_1px_3px_rgba(0,0,0,0.02)] space-y-4">
+            <p className="text-xs font-semibold uppercase tracking-wider text-[var(--muted)]">
+              Last updated: {LAST_UPDATED}
+            </p>
+            <div className="space-y-3 pt-2">
+              <p>
+                <strong className="text-[var(--ink)]">1. Website Copyright:</strong> The website content, branding, and copy remain subject to the rights held by Lioran Developer Solutions and related ecosystem entities where applicable.
+              </p>
+              <p className="pl-4 border-l-2 border-[var(--hairline-strong)]">
+                1.1 Product repositories may use separate open-source or proprietary licenses that should be reviewed in their respective source repositories.
+              </p>
+              <p>
+                <strong className="text-[var(--ink)]">2. Brand & Trademarks:</strong> Reuse of logos, product names, or brand identity should preserve attribution and avoid misleading association.
+              </p>
+              <p className="pl-4 border-l-2 border-[var(--hairline-strong)]">
+                2.1 When in doubt, contact LDS for clarification before redistribution or commercial reuse.
+              </p>
+            </div>
           </div>
         </Container>
       </Section>
