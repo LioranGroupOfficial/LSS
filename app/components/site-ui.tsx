@@ -33,7 +33,7 @@ export function Section({ children, className = "", variant = "canvas" }: Sectio
         : "bg-[var(--canvas)]";
 
   return (
-    <section className={`py-16 sm:py-20 lg:py-24 ${bgClass} ${className}`.trim()}>
+    <section className={`py-12 sm:py-16 lg:py-24 ${bgClass} ${className}`.trim()}>
       {children}
     </section>
   );
@@ -54,7 +54,7 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <div
-      className={`min-w-0 space-y-3 ${
+      className={`min-w-0 space-y-2.5 sm:space-y-3 ${
         align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"
       }`}
     >
@@ -63,11 +63,11 @@ export function SectionHeading({
           {eyebrow}
         </p>
       ) : null}
-      <h2 className="text-2xl font-semibold tracking-[-0.84px] text-[var(--ink)] sm:text-3xl lg:text-[36px] lg:leading-[1.15] lg:tracking-[-1.08px]">
+      <h2 className="text-2xl font-semibold tracking-[-0.7px] text-[var(--ink)] sm:text-3xl lg:text-[36px] lg:leading-[1.15] lg:tracking-[-1.08px]">
         {title}
       </h2>
       {description ? (
-        <p className="max-w-[70ch] text-base leading-[1.6] text-[var(--body)] sm:text-lg">
+        <p className="max-w-[70ch] text-sm leading-[1.6] text-[var(--body)] sm:text-base lg:text-lg">
           {description}
         </p>
       ) : null}
@@ -163,7 +163,7 @@ export function InfoCard({
 
   return (
     <article
-      className={`rounded-[12px] border p-6 transition-all duration-150 sm:p-7 ${
+      className={`min-w-0 rounded-[12px] border p-5 transition-all duration-150 sm:p-7 ${
         isDark
           ? "border-[var(--hairline-strong)] bg-[var(--surface-dark)] text-[var(--on-dark)]"
           : "border-[var(--hairline-strong)] bg-[var(--surface-card)] text-[var(--ink)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
@@ -176,7 +176,7 @@ export function InfoCard({
           ) : null}
           {title ? (
             <h3
-              className={`text-lg font-semibold tracking-[-0.2px] ${
+              className={`text-base font-semibold tracking-[-0.2px] sm:text-lg ${
                 isDark ? "text-[var(--on-dark)]" : "text-[var(--ink)]"
               }`}
             >
@@ -188,7 +188,7 @@ export function InfoCard({
 
       {description ? (
         <p
-          className={`text-sm leading-relaxed ${
+          className={`text-xs leading-relaxed sm:text-sm ${
             isDark ? "text-[var(--on-dark-soft)]" : "text-[var(--body)]"
           }`}
         >
@@ -209,18 +209,18 @@ type TableProps = {
 
 export function TechnicalTable({ caption, headers, rows }: TableProps) {
   return (
-    <div className="overflow-hidden rounded-[12px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
-      <div className="border-b border-[var(--hairline)] bg-[var(--canvas-soft)] px-6 py-3.5">
+    <div className="w-full max-w-full min-w-0 overflow-hidden rounded-[12px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+      <div className="border-b border-[var(--hairline)] bg-[var(--canvas-soft)] px-4 py-3 sm:px-6 sm:py-3.5">
         <span className="text-[12px] font-semibold uppercase tracking-[0.88px] text-[var(--body)]">
           {caption}
         </span>
       </div>
       <div className="overflow-x-auto">
-        <table className="w-full border-collapse text-left text-sm">
+        <table className="w-full min-w-[500px] border-collapse text-left text-xs sm:text-sm">
           <thead>
             <tr className="border-b border-[var(--hairline)] bg-[var(--canvas-soft)]/50 text-[var(--ink)]">
               {headers.map((header) => (
-                <th key={header} scope="col" className="px-6 py-3.5 font-semibold text-[var(--ink)]">
+                <th key={header} scope="col" className="px-4 py-3 font-semibold text-[var(--ink)] sm:px-6 sm:py-3.5">
                   {header}
                 </th>
               ))}
@@ -235,7 +235,7 @@ export function TechnicalTable({ caption, headers, rows }: TableProps) {
                 {row.map((cell, cellIndex) => (
                   <td
                     key={`${caption}-${index}-${cellIndex}`}
-                    className="px-6 py-4 align-top text-sm text-[var(--body)]"
+                    className="px-4 py-3 align-top text-xs text-[var(--body)] sm:px-6 sm:py-4 sm:text-sm"
                   >
                     {cell}
                   </td>

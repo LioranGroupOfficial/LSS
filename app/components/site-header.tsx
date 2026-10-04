@@ -54,7 +54,6 @@ const desktopGroups: MenuGroup[] = [
 ];
 
 const directLinks: Array<{ href: AppRoute; label: string }> = [
-  { href: "/products", label: "Overview" },
   { href: "/careers", label: "Careers" },
   { href: "/contact", label: "Contact" },
 ];
@@ -201,30 +200,25 @@ export function SiteHeader() {
       : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header className="sticky top-0 z-40 h-16 border-b border-[var(--hairline-strong)] bg-[var(--canvas)]/95 backdrop-blur-md">
+    <header className="sticky top-0 z-40 h-[52px] border-b border-[var(--hairline)] bg-[var(--canvas)]/90 backdrop-blur-md">
       <nav
         ref={navRef}
-        className="mx-auto flex h-full max-w-[1200px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8"
+        className="mx-auto flex h-full max-w-[1200px] items-center justify-between gap-3 px-4 sm:px-6 lg:px-8"
         aria-label="Primary"
       >
         {/* Brand */}
-        <div className="flex items-center gap-6">
-          <Link href="/" className="group flex items-center gap-3">
-            <BrandLogo size={36} />
-            <div className="min-w-0">
-              <span className="block truncate text-sm font-semibold tracking-[-0.2px] text-[var(--ink)]">
-                Lioran Developer Solutions
-              </span>
-              <span className="hidden truncate text-[11px] font-medium text-[var(--body)] sm:block">
-                A Lioran Group company
-              </span>
-            </div>
+        <div className="min-w-0 flex-1 sm:flex-initial">
+          <Link href="/" className="group flex items-center gap-2.5 min-w-0 transition-opacity hover:opacity-85">
+            <BrandLogo size={24} />
+            <span className="truncate text-[13.5px] font-semibold tracking-[-0.2px] text-[var(--ink)] sm:text-[14px]">
+              Lioran Developer Solutions
+            </span>
           </Link>
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden items-center gap-2 lg:flex">
-          <ul className="flex items-center gap-1">
+        <div className="hidden items-center gap-1 lg:flex">
+          <ul className="flex items-center gap-0.5">
             {desktopGroups.map((group) => {
               const panelId = `${menuId}-${group.key}`;
               const expanded = openDropdown === group.key;
@@ -238,7 +232,7 @@ export function SiteHeader() {
                     onClick={() =>
                       setOpenDropdown((current) => (current === group.key ? null : group.key))
                     }
-                    className={`inline-flex h-9 items-center gap-1.5 rounded-[8px] px-3 text-sm font-medium transition-colors ${
+                    className={`inline-flex h-8 items-center gap-1 rounded-[6px] px-2.5 text-[13px] font-medium transition-colors ${
                       expanded
                         ? "bg-[var(--surface-strong)] text-[var(--ink)]"
                         : "text-[var(--body)] hover:bg-[var(--surface-strong)] hover:text-[var(--ink)]"
@@ -246,7 +240,7 @@ export function SiteHeader() {
                   >
                     {group.label}
                     <ChevronDownIcon
-                      className={`h-3.5 w-3.5 transition-transform duration-150 ${
+                      className={`h-3 w-3 text-[var(--body)] transition-transform duration-150 ${
                         expanded ? "rotate-180" : ""
                       }`}
                     />
@@ -255,7 +249,7 @@ export function SiteHeader() {
                     <div
                       id={panelId}
                       role="menu"
-                      className="absolute left-0 top-[calc(100%+8px)] z-50 min-w-[280px] rounded-[12px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] p-2 shadow-lg"
+                      className="absolute left-0 top-[calc(100%+6px)] z-50 min-w-[260px] rounded-[10px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] p-1.5 shadow-[0_8px_24px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.4)]"
                     >
                       {group.links.map((link) =>
                         link.external ? (
@@ -265,16 +259,16 @@ export function SiteHeader() {
                             target="_blank"
                             rel="noopener noreferrer"
                             role="menuitem"
-                            className="block rounded-[8px] px-3 py-2.5 transition-colors hover:bg-[var(--surface-strong)]"
+                            className="block rounded-[6px] px-3 py-2 transition-colors hover:bg-[var(--surface-strong)]"
                           >
                             <div className="flex items-center justify-between">
-                              <span className="text-sm font-medium text-[var(--ink)]">
+                              <span className="text-[13px] font-medium text-[var(--ink)]">
                                 {link.label}
                               </span>
                               <span className="text-[11px] text-[var(--body)]">↗</span>
                             </div>
                             {link.description ? (
-                              <p className="mt-0.5 text-[12px] text-[var(--body)]">
+                              <p className="mt-0.5 text-[11px] leading-snug text-[var(--body)]">
                                 {link.description}
                               </p>
                             ) : null}
@@ -284,13 +278,13 @@ export function SiteHeader() {
                             key={link.href}
                             href={link.href}
                             role="menuitem"
-                            className="block rounded-[8px] px-3 py-2.5 transition-colors hover:bg-[var(--surface-strong)]"
+                            className="block rounded-[6px] px-3 py-2 transition-colors hover:bg-[var(--surface-strong)]"
                           >
-                            <span className="block text-sm font-medium text-[var(--ink)]">
+                            <span className="block text-[13px] font-medium text-[var(--ink)]">
                               {link.label}
                             </span>
                             {link.description ? (
-                              <p className="mt-0.5 text-[12px] text-[var(--body)]">
+                              <p className="mt-0.5 text-[11px] leading-snug text-[var(--body)]">
                                 {link.description}
                               </p>
                             ) : null}
@@ -306,7 +300,7 @@ export function SiteHeader() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`inline-flex h-9 items-center rounded-[8px] px-3 text-sm font-medium transition-colors ${
+                  className={`inline-flex h-8 items-center rounded-[6px] px-2.5 text-[13px] font-medium transition-colors ${
                     isActive(link.href)
                       ? "bg-[var(--surface-strong)] text-[var(--ink)]"
                       : "text-[var(--body)] hover:bg-[var(--surface-strong)] hover:text-[var(--ink)]"
@@ -318,20 +312,20 @@ export function SiteHeader() {
             ))}
           </ul>
 
-          <div className="ml-2 flex items-center gap-2 border-l border-[var(--hairline-strong)] pl-3">
+          <div className="ml-1.5 flex items-center gap-1.5 border-l border-[var(--hairline-strong)] pl-2.5">
             <ThemeToggle />
             <a
               href={GITHUB_ORG_URL}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub Repository"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] text-[var(--ink)] transition-colors hover:bg-[var(--surface-strong)]"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-[6px] text-[var(--body)] transition-colors hover:bg-[var(--surface-strong)] hover:text-[var(--ink)]"
             >
               <GitHubIcon className="h-4 w-4" />
             </a>
             <Link
               href="/products/liorandb"
-              className="btn-primary !h-9 !px-3.5"
+              className="btn-primary !h-8 !rounded-[6px] !px-3 !text-[12px] !font-medium"
             >
               Get Started
             </Link>
@@ -339,7 +333,7 @@ export function SiteHeader() {
         </div>
 
         {/* Mobile menu button and theme toggle */}
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="flex shrink-0 items-center gap-1.5 lg:hidden">
           <ThemeToggle />
           <button
             ref={menuButtonRef}
@@ -348,7 +342,7 @@ export function SiteHeader() {
             aria-expanded={mobileOpen}
             aria-label={mobileOpen ? "Close navigation" : "Open navigation"}
             onClick={() => setMobileOpen((current) => !current)}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] text-[var(--ink)]"
+            className="inline-flex h-8 w-8 items-center justify-center rounded-[6px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] text-[var(--ink)]"
           >
             {mobileOpen ? <CloseIcon className="h-4 w-4" /> : <MenuIcon className="h-4 w-4" />}
           </button>

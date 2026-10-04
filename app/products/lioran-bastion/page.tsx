@@ -82,10 +82,10 @@ export default function LioranBastionPage() {
       <Section variant="soft">
         <Container>
           <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
-            <div>
+            <div className="min-w-0">
               <CodeBlock label="TypeScript Driver (@liorans3/driver)" code={tsDriverSnippet} language="TypeScript" />
             </div>
-            <div>
+            <div className="min-w-0">
               <CodeBlock label="CLI Quickstart (@liorans3/cli)" code={cliSnippet} language="Bash" />
             </div>
           </div>

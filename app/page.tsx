@@ -46,15 +46,15 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative border-b border-[var(--hairline-strong)] bg-[var(--canvas)] py-16 sm:py-20 lg:py-24">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             {/* Left Column: Editorial Headline & Actions */}
-            <div className="space-y-6">
+            <div className="min-w-0 space-y-5 sm:space-y-6">
               <div className="inline-flex items-center gap-2">
                 <Badge variant="default">Engineering First</Badge>
                 <span className="text-[12px] font-medium text-[var(--body)]">Built in India</span>
               </div>
 
-              <h1 className="text-4xl font-semibold tracking-[-1.44px] text-[var(--ink)] sm:text-5xl lg:text-[58px] lg:leading-[1.08] lg:tracking-[-1.92px]">
+              <h1 className="text-3xl font-semibold tracking-[-0.9px] text-[var(--ink)] sm:text-5xl sm:tracking-[-1.44px] lg:text-[58px] lg:leading-[1.08] lg:tracking-[-1.92px]">
                 Developer infrastructure, built in India.
               </h1>
 
@@ -66,7 +66,7 @@ export default function HomePage() {
                 Reduce dependence on foreign developer infrastructure while keeping performance, reliability, security, and developer experience at the centre.
               </p>
 
-              <div className="flex flex-wrap items-center gap-3 pt-2">
+              <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-2">
                 <ButtonLink href="/products" variant="primary">
                   Explore Our Products
                 </ButtonLink>
@@ -80,21 +80,21 @@ export default function HomePage() {
             </div>
 
             {/* Right Column: Technical Surface / Code Chrome */}
-            <div className="space-y-4">
+            <div className="min-w-0 space-y-4">
               <CodeBlock label="LioranDB Engine API" code={heroCode} language="TypeScript" />
 
-              <div className="grid grid-cols-3 gap-3">
-                <div className="rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] p-3.5">
+              <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-3 sm:gap-3">
+                <div className="rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] p-3 sm:p-3.5">
                   <TerminalIcon className="h-4 w-4 text-[var(--ink)]" />
                   <p className="mt-2 text-xs font-semibold text-[var(--ink)]">Repository-led</p>
                   <p className="mt-1 text-xs leading-normal text-[var(--body)]">Source & docs close.</p>
                 </div>
-                <div className="rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] p-3.5">
+                <div className="rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] p-3 sm:p-3.5">
                   <ServerIcon className="h-4 w-4 text-[var(--ink)]" />
                   <p className="mt-2 text-xs font-semibold text-[var(--ink)]">Backend Systems</p>
                   <p className="mt-1 text-xs leading-normal text-[var(--body)]">DB, storage & auth.</p>
                 </div>
-                <div className="rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] p-3.5">
+                <div className="rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] p-3 sm:p-3.5">
                   <ShieldIcon className="h-4 w-4 text-[var(--ink)]" />
                   <p className="mt-2 text-xs font-semibold text-[var(--ink)]">Measured Scope</p>
                   <p className="mt-1 text-xs leading-normal text-[var(--body)]">Honest status.</p>

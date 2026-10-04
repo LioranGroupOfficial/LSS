@@ -74,11 +74,11 @@ export default function LioranDbPage() {
       <Section variant="soft">
         <Container>
           <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
-            <div className="space-y-6">
+            <div className="min-w-0 space-y-6">
               <InfoCard title="Current Status & Positioning" description={product.detail} />
               <InfoCard title="Intended Users & Workloads" description={product.audience} />
             </div>
-            <div>
+            <div className="min-w-0">
               <CodeBlock label="LioranDB Node.js SDK" code={sampleCode} language="TypeScript" />
             </div>
           </div>

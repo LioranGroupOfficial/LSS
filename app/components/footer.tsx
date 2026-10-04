@@ -65,9 +65,9 @@ export function Footer() {
   return (
     <footer className="border-t border-[var(--hairline-strong)] bg-[var(--canvas)] text-[var(--body)]">
       <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[1.5fr_repeat(4,minmax(0,1fr))]">
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:grid-cols-[1.5fr_repeat(4,minmax(0,1fr))] lg:gap-10">
           {/* Brand Column */}
-          <div className="space-y-4">
+          <div className="col-span-2 space-y-4 sm:col-span-4 lg:col-span-1">
             <div className="flex items-center gap-3">
               <BrandLogo size={36} />
               <span className="text-sm font-semibold tracking-[-0.2px] text-[var(--ink)]">
@@ -98,7 +98,7 @@ export function Footer() {
 
           {/* Navigation Columns */}
           {linkGroups.map((group) => (
-            <div key={group.title} className="space-y-3">
+            <div key={group.title} className="col-span-1 space-y-3">
               <p className="text-[11px] font-semibold uppercase tracking-[0.88px] text-[var(--body)]">
                 {group.title}
               </p>
