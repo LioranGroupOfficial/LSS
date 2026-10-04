@@ -444,7 +444,7 @@ export function BrandLogo({
         priority
       />
       <Image
-        src="/logo/light.png"
+        src="/logo/white.png"
         alt="Lioran Developer Solutions"
         width={size}
         height={size}
