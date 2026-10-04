@@ -6,6 +6,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import type { AppRoute } from "@/lib/site";
 import { GITHUB_ORG_URL, LIORAN_GROUP_URL } from "@/lib/site";
 import { ChevronDownIcon, CloseIcon, GitHubIcon, MenuIcon } from "./icons";
+import { BrandLogo } from "./site-ui";
 import { ThemeToggle } from "./theme-toggle";
 
 type MenuGroup = {
@@ -209,9 +210,7 @@ export function SiteHeader() {
         {/* Brand */}
         <div className="flex items-center gap-6">
           <Link href="/" className="group flex items-center gap-3">
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-strong)] text-[12px] font-bold text-[var(--ink)] transition-colors group-hover:border-[var(--ink)]">
-              LDS
-            </span>
+            <BrandLogo size={36} />
             <div className="min-w-0">
               <span className="block truncate text-sm font-semibold tracking-[-0.2px] text-[var(--ink)]">
                 Lioran Developer Solutions

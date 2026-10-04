@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { type ReactNode, useState } from "react";
 import { ArrowUpRightIcon, CheckIcon, CopyIcon } from "./icons";
@@ -411,5 +412,45 @@ export function SkipLink() {
     >
       Skip to content
     </a>
+  );
+}
+
+type BrandLogoProps = {
+  size?: number;
+  className?: string;
+  showBorder?: boolean;
+};
+
+export function BrandLogo({
+  size = 36,
+  className = "",
+  showBorder = true,
+}: BrandLogoProps) {
+  const containerClass = showBorder
+    ? `relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-strong)] transition-colors group-hover:border-[var(--ink)]`
+    : `relative inline-flex shrink-0 items-center justify-center overflow-hidden`;
+
+  return (
+    <span
+      className={`${containerClass} ${className}`.trim()}
+      style={{ width: `${size}px`, height: `${size}px` }}
+    >
+      <Image
+        src="/logo/light.png"
+        alt="Lioran Developer Solutions"
+        width={size}
+        height={size}
+        className="h-full w-full object-contain p-0.5 dark:hidden"
+        priority
+      />
+      <Image
+        src="/logo/dark.png"
+        alt="Lioran Developer Solutions"
+        width={size}
+        height={size}
+        className="hidden h-full w-full object-contain p-0.5 dark:block"
+        priority
+      />
+    </span>
   );
 }

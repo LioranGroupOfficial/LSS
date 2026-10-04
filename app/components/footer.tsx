@@ -8,6 +8,7 @@ import {
   WEBSITE_VERSION,
 } from "@/lib/site";
 import { GitHubIcon } from "./icons";
+import { BrandLogo } from "./site-ui";
 
 const linkGroups = [
   {
@@ -68,9 +69,7 @@ export function Footer() {
           {/* Brand Column */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-strong)] text-[12px] font-bold text-[var(--ink)]">
-                LDS
-              </span>
+              <BrandLogo size={36} />
               <span className="text-sm font-semibold tracking-[-0.2px] text-[var(--ink)]">
                 Lioran Developer Solutions
               </span>

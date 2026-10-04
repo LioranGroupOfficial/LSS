@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { createMetadata } from "@/lib/metadata";
 import { LAST_UPDATED } from "@/lib/site";
 import { PageShell } from "../components/page-shell";
@@ -70,6 +71,40 @@ export default function BrandPage() {
                   <div className="h-6 w-full rounded bg-[#fafafa] border border-[var(--hairline)]" />
                   <p className="mt-2 text-xs font-semibold text-[var(--ink)]">Canvas Soft</p>
                   <p className="font-mono text-xs text-[var(--body)]">#fafafa</p>
+                </div>
+              </div>
+            </InfoCard>
+
+            <InfoCard title="Official Logomark & Monogram">
+              <p className="text-sm text-[var(--body)]">
+                The official LDS geometric monogram for light and dark backgrounds.
+              </p>
+              <div className="mt-4 grid grid-cols-2 gap-3">
+                <div className="flex flex-col items-center justify-center rounded-[8px] border border-[#dcdee0] bg-[#ffffff] p-6 text-center">
+                  <div className="relative h-16 w-16">
+                    <Image
+                      src="/logo/light.png"
+                      alt="LDS Light Logo"
+                      width={64}
+                      height={64}
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
+                  <span className="mt-3 font-mono text-xs text-[#171717]">Light Mode</span>
+                  <span className="text-[11px] text-[#60646c]">/logo/light.png</span>
+                </div>
+                <div className="flex flex-col items-center justify-center rounded-[8px] border border-[#22252c] bg-[#0c0d0e] p-6 text-center">
+                  <div className="relative h-16 w-16">
+                    <Image
+                      src="/logo/dark.png"
+                      alt="LDS Dark Logo"
+                      width={64}
+                      height={64}
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
+                  <span className="mt-3 font-mono text-xs text-[#f8fafc]">Dark Mode</span>
+                  <span className="text-[11px] text-[#94a3b8]">/logo/dark.png</span>
                 </div>
               </div>
             </InfoCard>
