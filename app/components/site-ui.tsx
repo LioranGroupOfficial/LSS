@@ -427,8 +427,8 @@ export function BrandLogo({
   showBorder = true,
 }: BrandLogoProps) {
   const containerClass = showBorder
-    ? `relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-strong)] transition-colors group-hover:border-[var(--ink)]`
-    : `relative inline-flex shrink-0 items-center justify-center overflow-hidden`;
+    ? `relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-[8px] border border-[#cbd5e1] bg-[#f0f0f3] transition-colors group-hover:border-[#171717]`
+    : `relative inline-flex shrink-0 items-center justify-center overflow-hidden bg-[#f0f0f3]`;
 
   return (
     <span
@@ -440,15 +440,7 @@ export function BrandLogo({
         alt="Lioran Developer Solutions"
         width={size}
         height={size}
-        className="h-full w-full object-contain p-0.5 dark:hidden"
-        priority
-      />
-      <Image
-        src="/logo/dark.png"
-        alt="Lioran Developer Solutions"
-        width={size}
-        height={size}
-        className="hidden h-full w-full object-contain p-0.5 dark:block"
+        className="h-full w-full object-contain p-0.5"
         priority
       />
     </span>
