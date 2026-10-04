@@ -40,36 +40,36 @@ export default function BrandPage() {
               <p className="text-sm text-[var(--body)]">
                 The LDS visual system is light-first, high contrast, and strictly gradient-free.
               </p>
-              <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
-                <div className="rounded-[8px] border border-[var(--hairline-strong)] bg-white p-3">
-                  <div className="h-6 w-full rounded border border-[#dcdee0] bg-white" />
-                  <p className="mt-2 text-xs font-semibold text-[#171717]">Canvas</p>
-                  <p className="font-mono text-[10px] text-[#60646c]">#ffffff</p>
+              <div className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
+                <div className="rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] p-3">
+                  <div className="h-6 w-full rounded border border-[#dcdee0] bg-[#ffffff]" />
+                  <p className="mt-2 text-xs font-semibold text-[var(--ink)]">Canvas</p>
+                  <p className="font-mono text-xs text-[var(--body)]">#ffffff</p>
                 </div>
-                <div className="rounded-[8px] border border-[var(--hairline-strong)] bg-white p-3">
+                <div className="rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] p-3">
                   <div className="h-6 w-full rounded bg-[#171717]" />
-                  <p className="mt-2 text-xs font-semibold text-[#171717]">Ink / Text</p>
-                  <p className="font-mono text-[10px] text-[#60646c]">#171717</p>
+                  <p className="mt-2 text-xs font-semibold text-[var(--ink)]">Ink / Text</p>
+                  <p className="font-mono text-xs text-[var(--body)]">#171717</p>
                 </div>
-                <div className="rounded-[8px] border border-[var(--hairline-strong)] bg-white p-3">
+                <div className="rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] p-3">
                   <div className="h-6 w-full rounded bg-[#000000]" />
-                  <p className="mt-2 text-xs font-semibold text-[#171717]">Primary CTA</p>
-                  <p className="font-mono text-[10px] text-[#60646c]">#000000</p>
+                  <p className="mt-2 text-xs font-semibold text-[var(--ink)]">Primary CTA</p>
+                  <p className="font-mono text-xs text-[var(--body)]">#000000</p>
                 </div>
-                <div className="rounded-[8px] border border-[var(--hairline-strong)] bg-white p-3">
+                <div className="rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] p-3">
                   <div className="h-6 w-full rounded bg-[#0d74ce]" />
-                  <p className="mt-2 text-xs font-semibold text-[#171717]">Text Link</p>
-                  <p className="font-mono text-[10px] text-[#60646c]">#0d74ce</p>
+                  <p className="mt-2 text-xs font-semibold text-[var(--ink)]">Text Link</p>
+                  <p className="font-mono text-xs text-[var(--body)]">#0d74ce</p>
                 </div>
-                <div className="rounded-[8px] border border-[var(--hairline-strong)] bg-white p-3">
+                <div className="rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] p-3">
                   <div className="h-6 w-full rounded bg-[#dcdee0]" />
-                  <p className="mt-2 text-xs font-semibold text-[#171717]">Hairline Border</p>
-                  <p className="font-mono text-[10px] text-[#60646c]">#dcdee0</p>
+                  <p className="mt-2 text-xs font-semibold text-[var(--ink)]">Hairline Border</p>
+                  <p className="font-mono text-xs text-[var(--body)]">#dcdee0</p>
                 </div>
-                <div className="rounded-[8px] border border-[var(--hairline-strong)] bg-white p-3">
-                  <div className="h-6 w-full rounded bg-[#fafafa]" />
-                  <p className="mt-2 text-xs font-semibold text-[#171717]">Canvas Soft</p>
-                  <p className="font-mono text-[10px] text-[#60646c]">#fafafa</p>
+                <div className="rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] p-3">
+                  <div className="h-6 w-full rounded bg-[#fafafa] border border-[var(--hairline)]" />
+                  <p className="mt-2 text-xs font-semibold text-[var(--ink)]">Canvas Soft</p>
+                  <p className="font-mono text-xs text-[var(--body)]">#fafafa</p>
                 </div>
               </div>
             </InfoCard>

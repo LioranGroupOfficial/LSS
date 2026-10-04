@@ -54,7 +54,7 @@ export default function LioranBastionPage() {
             <div className="flex flex-wrap items-center gap-2">
               <Badge variant="default">v1 Pre-Alpha Live</Badge>
               <Badge variant="subtle">Alpha: Oct 29, 2026</Badge>
-              <span className="text-xs text-[var(--muted)]">{product.category}</span>
+              <span className="text-xs text-[var(--body)]">{product.category}</span>
             </div>
 
             <SectionHeading
@@ -106,7 +106,7 @@ export default function LioranBastionPage() {
                   </div>
                   <div className="flex items-center justify-between text-xs">
                     <span className="font-semibold text-[var(--ink)]">Alpha Release</span>
-                    <span className="font-mono text-[var(--muted)]">October 29, 2026</span>
+                    <span className="font-mono text-[var(--body)]">October 29, 2026</span>
                   </div>
                 </div>
               </div>

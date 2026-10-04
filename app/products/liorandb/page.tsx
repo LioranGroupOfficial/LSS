@@ -46,7 +46,7 @@ export default function LioranDbPage() {
           <div className="space-y-6">
             <div className="flex flex-wrap items-center gap-2">
               <Badge variant="default">Active Development</Badge>
-              <span className="text-xs text-[var(--muted)]">{product.category}</span>
+              <span className="text-xs text-[var(--body)]">{product.category}</span>
             </div>
 
             <SectionHeading

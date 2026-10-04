@@ -146,13 +146,13 @@ export function ContactForm() {
       </FormField>
 
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between pt-2">
-        <p className="text-xs text-[var(--muted)]">
+        <p className="text-xs text-[var(--body)]">
           Submissions are directly routed to the LDS engineering and founder desk.
         </p>
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="inline-flex h-10 items-center justify-center rounded-[8px] bg-[var(--primary)] px-6 text-sm font-medium text-[var(--on-primary)] transition-colors hover:bg-[var(--primary-active)] disabled:opacity-60"
+          className="btn-primary !h-10 !px-6 disabled:opacity-60"
         >
           {status === "submitting" ? "Sending..." : "Submit Message"}
         </button>
@@ -161,11 +161,7 @@ export function ContactForm() {
       {feedback ? (
         <div
           role="status"
-          className={`rounded-[8px] border p-4 text-sm ${
-            status === "success"
-              ? "border-[#16a34a]/30 bg-[#16a34a]/10 text-[var(--semantic-success)]"
-              : "border-[#eb8e90]/30 bg-[#eb8e90]/10 text-[var(--semantic-error)]"
-          }`}
+          className="rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-strong)] p-4 text-sm font-medium text-[var(--ink)]"
         >
           {feedback}
         </div>
@@ -191,7 +187,7 @@ function FormField({
         <label htmlFor={htmlFor} className="text-sm font-medium text-[var(--ink)]">
           {label}
         </label>
-        <span className="text-[11px] text-[var(--muted)]">{description}</span>
+        <span className="text-[11px] text-[var(--body)]">{description}</span>
       </div>
       {children}
     </div>

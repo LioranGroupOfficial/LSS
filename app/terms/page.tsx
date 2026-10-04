@@ -26,7 +26,7 @@ export default function TermsPage() {
       <Section variant="soft">
         <Container>
           <div className="mx-auto max-w-3xl rounded-[12px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] p-6 sm:p-8 text-sm leading-relaxed text-[var(--body)] shadow-[0_1px_3px_rgba(0,0,0,0.02)] space-y-4">
-            <p className="text-xs font-semibold uppercase tracking-wider text-[var(--muted)]">
+            <p className="text-xs font-semibold uppercase tracking-wider text-[var(--body)]">
               Last updated: {LAST_UPDATED}
             </p>
             <div className="space-y-3 pt-2">

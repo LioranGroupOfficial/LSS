@@ -43,7 +43,7 @@ export default function ProductsPage() {
                   title={product.name}
                   meta={
                     <div className="flex items-center justify-between">
-                      <span className="text-[12px] font-medium text-[var(--muted)]">{product.category}</span>
+                      <span className="text-[12px] font-medium text-[var(--body)]">{product.category}</span>
                       <Badge variant="default">{product.status}</Badge>
                     </div>
                   }
@@ -59,7 +59,7 @@ export default function ProductsPage() {
                     </div>
 
                     <div className="border-t border-[var(--hairline)] pt-3">
-                      <p className="text-[11px] font-semibold uppercase tracking-wider text-[var(--muted)]">
+                      <p className="text-[11px] font-semibold uppercase tracking-wider text-[var(--body)]">
                         Intended Audience
                       </p>
                       <p className="mt-1 text-xs text-[var(--ink)]">{product.audience}</p>

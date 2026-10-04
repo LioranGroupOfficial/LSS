@@ -68,8 +68,8 @@ export default function FounderPage() {
               </div>
               <div className="mt-6 space-y-2 text-center">
                 <h3 className="text-base font-semibold text-[var(--ink)]">Swaraj Puppalwar</h3>
-                <p className="text-xs text-[var(--muted)]">Founder & CTO, Lioran Developer Solutions</p>
-                <p className="text-xs text-[var(--muted)]">Founder, Lioran Group</p>
+                <p className="text-xs text-[var(--body)]">Founder & CTO, Lioran Developer Solutions</p>
+                <p className="text-xs text-[var(--body)]">Founder, Lioran Group</p>
               </div>
               <div className="mt-6 flex flex-col gap-2 border-t border-[var(--hairline)] pt-4">
                 <ButtonLink href={FOUNDER_PORTFOLIO_URL} variant="primary" external className="w-full text-xs">
@@ -114,7 +114,7 @@ export default function FounderPage() {
                     className="flex items-center justify-between rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--canvas-soft)] p-3 text-xs font-medium text-[var(--ink)] transition-colors hover:bg-[var(--surface-strong)]"
                   >
                     <span>Portfolio Website</span>
-                    <span className="text-[var(--muted)]">↗</span>
+                    <span className="text-[var(--body)]">↗</span>
                   </a>
                   <a
                     href={FOUNDER_GITHUB_URL}
@@ -123,7 +123,7 @@ export default function FounderPage() {
                     className="flex items-center justify-between rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--canvas-soft)] p-3 text-xs font-medium text-[var(--ink)] transition-colors hover:bg-[var(--surface-strong)]"
                   >
                     <span>Founder GitHub</span>
-                    <span className="text-[var(--muted)]">↗</span>
+                    <span className="text-[var(--body)]">↗</span>
                   </a>
                   <a
                     href={GITHUB_ORG_URL}
@@ -132,7 +132,7 @@ export default function FounderPage() {
                     className="flex items-center justify-between rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--canvas-soft)] p-3 text-xs font-medium text-[var(--ink)] transition-colors hover:bg-[var(--surface-strong)]"
                   >
                     <span>Lioran Group GitHub</span>
-                    <span className="text-[var(--muted)]">↗</span>
+                    <span className="text-[var(--body)]">↗</span>
                   </a>
                   <a
                     href={LIORAN_GROUP_URL}
@@ -141,7 +141,7 @@ export default function FounderPage() {
                     className="flex items-center justify-between rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--canvas-soft)] p-3 text-xs font-medium text-[var(--ink)] transition-colors hover:bg-[var(--surface-strong)]"
                   >
                     <span>Lioran Group Official</span>
-                    <span className="text-[var(--muted)]">↗</span>
+                    <span className="text-[var(--body)]">↗</span>
                   </a>
                   <a
                     href={FOUNDER_X_URL}
@@ -150,7 +150,7 @@ export default function FounderPage() {
                     className="flex items-center justify-between rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--canvas-soft)] p-3 text-xs font-medium text-[var(--ink)] transition-colors hover:bg-[var(--surface-strong)] sm:col-span-2"
                   >
                     <span>X / Twitter (@PuppalwarSwaraj)</span>
-                    <span className="text-[var(--muted)]">↗</span>
+                    <span className="text-[var(--body)]">↗</span>
                   </a>
                 </div>
               </InfoCard>

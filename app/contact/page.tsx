@@ -43,7 +43,7 @@ export default function ContactPage() {
               <InfoCard title="Direct Email Channels">
                 <ul className="space-y-3 text-sm">
                   <li>
-                    <span className="block text-xs font-semibold uppercase tracking-wider text-[var(--muted)]">
+                    <span className="block text-xs font-semibold uppercase tracking-wider text-[var(--body)]">
                       General & Product
                     </span>
                     <a href={`mailto:${CONTACT_EMAIL}`} className="text-sm font-medium text-[var(--ink)] hover:underline">
@@ -51,7 +51,7 @@ export default function ContactPage() {
                     </a>
                   </li>
                   <li>
-                    <span className="block text-xs font-semibold uppercase tracking-wider text-[var(--muted)]">
+                    <span className="block text-xs font-semibold uppercase tracking-wider text-[var(--body)]">
                       Careers & Internships
                     </span>
                     <a href={`mailto:${CAREERS_EMAIL}`} className="text-sm font-medium text-[var(--ink)] hover:underline">
@@ -59,7 +59,7 @@ export default function ContactPage() {
                     </a>
                   </li>
                   <li>
-                    <span className="block text-xs font-semibold uppercase tracking-wider text-[var(--muted)]">
+                    <span className="block text-xs font-semibold uppercase tracking-wider text-[var(--body)]">
                       Security & Disclosures
                     </span>
                     <a href={`mailto:${SECURITY_EMAIL}`} className="text-sm font-medium text-[var(--ink)] hover:underline">
@@ -81,7 +81,7 @@ export default function ContactPage() {
                     className="flex items-center justify-between rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--canvas-soft)] p-3 text-xs font-medium text-[var(--ink)] transition-colors hover:bg-[var(--surface-strong)]"
                   >
                     <span>GitHub Issues & Repositories</span>
-                    <span className="text-[var(--muted)]">↗</span>
+                    <span className="text-[var(--body)]">↗</span>
                   </a>
                   <a
                     href={DISCORD_URL}
@@ -90,7 +90,7 @@ export default function ContactPage() {
                     className="flex items-center justify-between rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--canvas-soft)] p-3 text-xs font-medium text-[var(--ink)] transition-colors hover:bg-[var(--surface-strong)]"
                   >
                     <span>Discord Developer Server</span>
-                    <span className="text-[var(--muted)]">↗</span>
+                    <span className="text-[var(--body)]">↗</span>
                   </a>
                 </div>
               </InfoCard>

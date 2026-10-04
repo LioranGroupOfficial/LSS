@@ -58,7 +58,7 @@ export function SectionHeading({
       }`}
     >
       {eyebrow ? (
-        <p className="text-[11px] font-semibold uppercase tracking-[0.88px] text-[var(--muted)]">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.88px] text-[var(--body)]">
           {eyebrow}
         </p>
       ) : null}
@@ -83,19 +83,18 @@ type BadgeProps = {
 /**
  * Restrained, editorial badge conforming directly to DESIGN.md:
  * Background: {colors.surface-strong}, Text: {colors.ink}, 11px uppercase tracking.
- * Zero neon/greenish AI-style badges.
  */
 export function Badge({ children, variant = "default", className = "" }: BadgeProps) {
-  const variantStyles =
+  const variantClass =
     variant === "subtle"
-      ? "bg-transparent text-[var(--body)] border-[var(--hairline-strong)]"
+      ? "bg-transparent text-[var(--body)] border border-[var(--hairline-strong)]"
       : variant === "active"
-        ? "bg-[var(--ink)] text-[var(--canvas)] border-[var(--ink)]"
-        : "bg-[var(--surface-strong)] text-[var(--ink)] border-[var(--hairline-strong)]";
+        ? "bg-[var(--ink)] text-[var(--canvas)] border border-[var(--ink)]"
+        : "badge-pill";
 
   return (
     <span
-      className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-[0.88px] ${variantStyles} ${className}`.trim()}
+      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-[0.88px] ${variantClass} ${className}`.trim()}
     >
       {children}
     </span>
@@ -117,17 +116,14 @@ export function ButtonLink({
   external = false,
   className = "",
 }: ButtonLinkProps) {
-  const baseClasses =
-    "inline-flex h-10 items-center justify-center rounded-[8px] text-sm font-medium transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ink)]";
-
-  const variantClasses =
+  const variantClass =
     variant === "primary"
-      ? "bg-[var(--primary)] text-[var(--on-primary)] px-4 hover:bg-[var(--primary-active)] active:scale-[0.99]"
+      ? "btn-primary"
       : variant === "secondary"
-        ? "border border-[var(--hairline-strong)] bg-[var(--surface-card)] text-[var(--ink)] px-4 hover:bg-[var(--surface-strong)]"
-        : "h-auto p-0 font-medium text-[var(--text-link)] underline-offset-4 hover:underline";
+        ? "btn-secondary"
+        : "btn-text";
 
-  const fullClasses = `${baseClasses} ${variantClasses} ${className}`.trim();
+  const fullClasses = `${variantClass} ${className}`.trim();
 
   if (external) {
     return (
@@ -175,7 +171,7 @@ export function InfoCard({
       {meta || title ? (
         <div className="mb-3 space-y-1">
           {meta ? (
-            <div className="text-[12px] font-medium text-[var(--muted)]">{meta}</div>
+            <div className="text-[12px] font-medium text-[var(--body)]">{meta}</div>
           ) : null}
           {title ? (
             <h3
@@ -214,7 +210,7 @@ export function TechnicalTable({ caption, headers, rows }: TableProps) {
   return (
     <div className="overflow-hidden rounded-[12px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
       <div className="border-b border-[var(--hairline)] bg-[var(--canvas-soft)] px-6 py-3.5">
-        <span className="text-[12px] font-semibold uppercase tracking-[0.88px] text-[var(--muted)]">
+        <span className="text-[12px] font-semibold uppercase tracking-[0.88px] text-[var(--body)]">
           {caption}
         </span>
       </div>
@@ -223,7 +219,7 @@ export function TechnicalTable({ caption, headers, rows }: TableProps) {
           <thead>
             <tr className="border-b border-[var(--hairline)] bg-[var(--canvas-soft)]/50 text-[var(--ink)]">
               {headers.map((header) => (
-                <th key={header} scope="col" className="px-6 py-3.5 font-semibold">
+                <th key={header} scope="col" className="px-6 py-3.5 font-semibold text-[var(--ink)]">
                   {header}
                 </th>
               ))}
@@ -400,7 +396,7 @@ export function EcosystemTile({
       <div className="min-w-0">
         <p className="truncate text-sm font-semibold text-[var(--ink)]">{name}</p>
         {category ? (
-          <p className="truncate text-[12px] text-[var(--muted)]">{category}</p>
+          <p className="truncate text-[12px] text-[var(--body)]">{category}</p>
         ) : null}
       </div>
     </div>

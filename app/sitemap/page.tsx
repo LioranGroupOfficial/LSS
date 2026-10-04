@@ -35,7 +35,7 @@ export default function HumanSitemapPage() {
                     className="flex items-center justify-between rounded-[8px] border border-[var(--hairline)] bg-[var(--canvas-soft)] p-3 font-medium text-[var(--ink)] transition-colors hover:bg-[var(--surface-strong)]"
                   >
                     <span>{entry.label}</span>
-                    <span className="font-mono text-xs text-[var(--muted)]">{entry.href}</span>
+                    <span className="font-mono text-xs text-[var(--body)]">{entry.href}</span>
                   </Link>
                 </li>
               ))}

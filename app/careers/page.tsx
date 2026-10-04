@@ -58,7 +58,7 @@ export default function CareersPage() {
             {careers.map((role) => (
               <InfoCard key={role.title} title={role.title}>
                 <div className="space-y-3">
-                  <p className="text-[11px] font-semibold uppercase tracking-wider text-[var(--muted)]">
+                  <p className="text-[11px] font-semibold uppercase tracking-wider text-[var(--body)]">
                     Focus Areas & Tech
                   </p>
                   <div className="flex flex-wrap gap-1.5">

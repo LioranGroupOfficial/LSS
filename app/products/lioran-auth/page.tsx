@@ -27,7 +27,7 @@ export default function LioranAuthPage() {
           <div className="space-y-6">
             <div className="flex flex-wrap items-center gap-2">
               <Badge variant="subtle">Research Track</Badge>
-              <span className="text-xs text-[var(--muted)]">{product.category}</span>
+              <span className="text-xs text-[var(--body)]">{product.category}</span>
             </div>
 
             <SectionHeading

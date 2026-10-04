@@ -216,7 +216,7 @@ export function SiteHeader() {
               <span className="block truncate text-sm font-semibold tracking-[-0.2px] text-[var(--ink)]">
                 Lioran Developer Solutions
               </span>
-              <span className="hidden truncate text-[11px] font-medium text-[var(--muted)] sm:block">
+              <span className="hidden truncate text-[11px] font-medium text-[var(--body)] sm:block">
                 A Lioran Group company
               </span>
             </div>
@@ -272,10 +272,10 @@ export function SiteHeader() {
                               <span className="text-sm font-medium text-[var(--ink)]">
                                 {link.label}
                               </span>
-                              <span className="text-[11px] text-[var(--muted)]">↗</span>
+                              <span className="text-[11px] text-[var(--body)]">↗</span>
                             </div>
                             {link.description ? (
-                              <p className="mt-0.5 text-[12px] text-[var(--muted)]">
+                              <p className="mt-0.5 text-[12px] text-[var(--body)]">
                                 {link.description}
                               </p>
                             ) : null}
@@ -291,7 +291,7 @@ export function SiteHeader() {
                               {link.label}
                             </span>
                             {link.description ? (
-                              <p className="mt-0.5 text-[12px] text-[var(--muted)]">
+                              <p className="mt-0.5 text-[12px] text-[var(--body)]">
                                 {link.description}
                               </p>
                             ) : null}
@@ -332,7 +332,7 @@ export function SiteHeader() {
             </a>
             <Link
               href="/products/liorandb"
-              className="inline-flex h-9 items-center justify-center rounded-[8px] bg-[var(--primary)] px-3.5 text-sm font-medium text-[var(--on-primary)] transition-colors hover:bg-[var(--primary-active)] active:scale-[0.99]"
+              className="btn-primary !h-9 !px-3.5"
             >
               Get Started
             </Link>
@@ -408,7 +408,7 @@ export function SiteHeader() {
                                 className="flex items-center justify-between rounded-[6px] px-3 py-2 text-sm text-[var(--body)] hover:bg-[var(--surface-strong)] hover:text-[var(--ink)]"
                               >
                                 <span>{link.label}</span>
-                                <span className="text-xs text-[var(--muted)]">↗</span>
+                                <span className="text-xs text-[var(--body)]">↗</span>
                               </a>
                             ) : (
                               <Link
@@ -432,14 +432,14 @@ export function SiteHeader() {
                   href={GITHUB_ORG_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] py-2.5 text-sm font-medium text-[var(--ink)]"
+                  className="btn-secondary !h-10 w-full"
                 >
-                  <GitHubIcon className="h-4 w-4" />
+                  <GitHubIcon className="mr-2 h-4 w-4" />
                   GitHub
                 </a>
                 <Link
                   href="/products/liorandb"
-                  className="flex items-center justify-center rounded-[8px] bg-[var(--primary)] py-2.5 text-sm font-medium text-[var(--on-primary)]"
+                  className="btn-primary !h-10 w-full"
                 >
                   Get Started
                 </Link>

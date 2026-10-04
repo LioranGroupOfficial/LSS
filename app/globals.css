@@ -2,7 +2,7 @@
 
 @layer base {
   :root {
-    /* DESIGN.md Light Mode Tokens (Canonical) */
+    /* DESIGN.md Light Mode Tokens (Canonical with AAA Accessible Contrast) */
     --canvas: #ffffff;
     --canvas-soft: #fafafa;
     --surface-card: #ffffff;
@@ -10,18 +10,18 @@
     --surface-dark: #171717;
     --surface-dark-elevated: #1a1a1a;
     --ink: #171717;
-    --body: #60646c;
+    --body: #4b5563;
     --body-strong: #171717;
-    --muted: #999999;
-    --muted-soft: #cccccc;
-    --hairline: #f0f0f3;
-    --hairline-soft: #f5f5f7;
-    --hairline-strong: #dcdee0;
+    --muted: #64748b;
+    --muted-soft: #94a3b8;
+    --hairline: #e2e8f0;
+    --hairline-soft: #f1f5f9;
+    --hairline-strong: #cbd5e1;
     --primary: #000000;
     --primary-active: #1a1a1a;
     --on-primary: #ffffff;
     --on-dark: #ffffff;
-    --on-dark-soft: #b0b4ba;
+    --on-dark-soft: #cbd5e1;
     
     /* Brand & Accent Tokens */
     --text-link: #0d74ce;
@@ -46,19 +46,19 @@
     --surface-strong: #20232a;
     --surface-dark: #090a0b;
     --surface-dark-elevated: #1a1c22;
-    --ink: #f4f4f5;
-    --body: #9ea3ad;
-    --body-strong: #f4f4f5;
-    --muted: #6c727f;
-    --muted-soft: #4b5260;
+    --ink: #f8fafc;
+    --body: #cbd5e1;
+    --body-strong: #f8fafc;
+    --muted: #94a3b8;
+    --muted-soft: #64748b;
     --hairline: #22252c;
     --hairline-soft: #1a1c22;
-    --hairline-strong: #303540;
+    --hairline-strong: #333a48;
     --primary: #ffffff;
     --primary-active: #e5e5e5;
     --on-primary: #000000;
     --on-dark: #ffffff;
-    --on-dark-soft: #b0b4ba;
+    --on-dark-soft: #cbd5e1;
 
     --text-link: #38bdf8;
     --text-link-secondary: #60a5fa;
@@ -152,6 +152,88 @@ code, pre, kbd, samp {
 :focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 2px;
+}
+
+/* Explicit Button Classes strictly matching DESIGN.md */
+.btn-primary {
+  background-color: var(--primary) !important;
+  color: var(--on-primary) !important;
+  border: 1px solid var(--primary) !important;
+  border-radius: 8px !important;
+  height: 40px !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  line-height: 1.0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 18px !important;
+  transition: all 150ms ease !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-active) !important;
+  border-color: var(--primary-active) !important;
+}
+
+.btn-secondary {
+  background-color: var(--surface-card) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--hairline-strong) !important;
+  border-radius: 8px !important;
+  height: 40px !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  line-height: 1.0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 18px !important;
+  transition: all 150ms ease !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+.btn-secondary:hover {
+  background-color: var(--surface-strong) !important;
+}
+
+.btn-text {
+  background-color: transparent !important;
+  color: var(--text-link) !important;
+  border: none !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  padding: 0 !important;
+  height: auto !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+.btn-text:hover {
+  text-decoration: underline !important;
+  text-underline-offset: 4px !important;
+}
+
+/* Badge Pill matching DESIGN.md */
+.badge-pill {
+  background-color: var(--surface-strong) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--hairline-strong) !important;
+  border-radius: 9999px !important;
+  padding: 3px 9px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.88px !important;
+  text-transform: uppercase !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  line-height: 1.4 !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

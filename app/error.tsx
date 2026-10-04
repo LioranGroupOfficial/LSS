@@ -16,7 +16,7 @@ export default function Error({
 
   return (
     <main className="mx-auto flex min-h-[70vh] max-w-[1200px] flex-col items-center justify-center gap-6 px-4 py-16 text-center sm:px-6 lg:px-8">
-      <span className="inline-flex rounded-full border border-[var(--semantic-error)]/30 bg-[var(--semantic-error)]/10 px-3 py-1 font-mono text-xs font-semibold uppercase tracking-wider text-[var(--semantic-error)]">
+      <span className="badge-pill">
         Application Error
       </span>
       <h1 className="text-3xl font-semibold tracking-tight text-[var(--ink)] sm:text-4xl">
@@ -29,13 +29,13 @@ export default function Error({
         <button
           type="button"
           onClick={reset}
-          className="inline-flex h-10 items-center justify-center rounded-[8px] bg-[var(--primary)] px-5 text-sm font-medium text-[var(--on-primary)] transition-colors hover:bg-[var(--primary-active)]"
+          className="btn-primary !h-10 !px-5"
         >
           Try Again
         </button>
         <Link
           href="/"
-          className="inline-flex h-10 items-center justify-center rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] px-5 text-sm font-medium text-[var(--ink)] transition-colors hover:bg-[var(--surface-strong)]"
+          className="btn-secondary !h-10 !px-5"
         >
           Return Home
         </Link>

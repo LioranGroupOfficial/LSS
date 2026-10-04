@@ -42,7 +42,7 @@ export default function StatusPage() {
                 rel="noopener noreferrer"
                 className="font-medium text-[var(--ink)] underline-offset-4 hover:underline"
               >
-                {entry.name} <span className="text-[11px] text-[var(--muted)]">↗</span>
+                {entry.name} <span className="text-[11px] text-[var(--body)]">↗</span>
               </a>,
               <Badge key={`${entry.name}-status`} variant="default">
                 {entry.status}

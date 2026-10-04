@@ -78,7 +78,7 @@ export function Footer() {
             <p className="max-w-[34ch] text-sm leading-relaxed text-[var(--body)]">
               Developer infrastructure, built in India. LDS builds databases, storage systems, and backend platforms for Indian products and global engineers.
             </p>
-            <p className="text-xs font-medium text-[var(--muted)]">
+            <p className="text-xs font-medium text-[var(--body)]">
               A company under <a href={LIORAN_GROUP_URL} target="_blank" rel="noopener noreferrer" className="text-[var(--ink)] hover:underline">Lioran Group</a>
             </p>
             <div className="flex flex-wrap gap-2 pt-2">
@@ -91,7 +91,7 @@ export function Footer() {
                   className="inline-flex items-center rounded-[6px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] px-2.5 py-1 text-xs font-medium text-[var(--body)] transition-colors hover:bg-[var(--surface-strong)] hover:text-[var(--ink)]"
                 >
                   {link.label}
-                  <span className="ml-1 text-[10px] text-[var(--muted)]">↗</span>
+                  <span className="ml-1 text-[10px] text-[var(--body)]">↗</span>
                 </a>
               ))}
             </div>
@@ -100,7 +100,7 @@ export function Footer() {
           {/* Navigation Columns */}
           {linkGroups.map((group) => (
             <div key={group.title} className="space-y-3">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.88px] text-[var(--muted)]">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.88px] text-[var(--body)]">
                 {group.title}
               </p>
               <ul className="space-y-2.5 text-sm">
@@ -120,7 +120,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 flex flex-col gap-4 border-t border-[var(--hairline)] pt-8 text-xs text-[var(--muted)] sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-4 border-t border-[var(--hairline)] pt-8 text-xs text-[var(--body)] sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Lioran Developer Solutions. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-4">
             <span className="inline-flex items-center rounded-[4px] border border-[var(--hairline-strong)] bg-[var(--surface-strong)] px-1.5 py-0.5 font-mono text-[11px] text-[var(--ink)]">

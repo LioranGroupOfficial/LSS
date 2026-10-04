@@ -51,18 +51,18 @@ export default function HomePage() {
             <div className="space-y-6">
               <div className="inline-flex items-center gap-2">
                 <Badge variant="default">Engineering First</Badge>
-                <span className="text-[12px] font-medium text-[var(--muted)]">Built in India</span>
+                <span className="text-[12px] font-medium text-[var(--body)]">Built in India</span>
               </div>
 
               <h1 className="text-4xl font-semibold tracking-[-1.44px] text-[var(--ink)] sm:text-5xl lg:text-[58px] lg:leading-[1.08] lg:tracking-[-1.92px]">
                 Developer infrastructure, built in India.
               </h1>
 
-              <p className="max-w-[62ch] text-base leading-relaxed text-[var(--body)] sm:text-lg">
+              <p className="max-w-[62ch] text-base leading-relaxed text-[var(--ink)] sm:text-lg">
                 Lioran Developer Solutions builds databases, storage systems, authentication infrastructure, and backend platforms for developers, SaaS companies, and Indian technology products.
               </p>
 
-              <p className="max-w-[62ch] text-sm leading-relaxed text-[var(--muted)]">
+              <p className="max-w-[62ch] text-sm leading-relaxed text-[var(--body)]">
                 Reduce dependence on foreign developer infrastructure while keeping performance, reliability, security, and developer experience at the centre.
               </p>
 
@@ -87,17 +87,17 @@ export default function HomePage() {
                 <div className="rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] p-3.5">
                   <TerminalIcon className="h-4 w-4 text-[var(--ink)]" />
                   <p className="mt-2 text-xs font-semibold text-[var(--ink)]">Repository-led</p>
-                  <p className="mt-1 text-[11px] leading-tight text-[var(--muted)]">Source & docs close.</p>
+                  <p className="mt-1 text-xs leading-normal text-[var(--body)]">Source & docs close.</p>
                 </div>
                 <div className="rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] p-3.5">
                   <ServerIcon className="h-4 w-4 text-[var(--ink)]" />
                   <p className="mt-2 text-xs font-semibold text-[var(--ink)]">Backend Systems</p>
-                  <p className="mt-1 text-[11px] leading-tight text-[var(--muted)]">DB, storage & auth.</p>
+                  <p className="mt-1 text-xs leading-normal text-[var(--body)]">DB, storage & auth.</p>
                 </div>
                 <div className="rounded-[8px] border border-[var(--hairline-strong)] bg-[var(--surface-card)] p-3.5">
                   <ShieldIcon className="h-4 w-4 text-[var(--ink)]" />
                   <p className="mt-2 text-xs font-semibold text-[var(--ink)]">Measured Scope</p>
-                  <p className="mt-1 text-[11px] leading-tight text-[var(--muted)]">Honest status.</p>
+                  <p className="mt-1 text-xs leading-normal text-[var(--body)]">Honest status.</p>
                 </div>
               </div>
             </div>
@@ -161,16 +161,16 @@ export default function HomePage() {
                   title={product.name}
                   meta={
                     <div className="flex items-center justify-between">
-                      <span className="text-[12px] font-medium text-[var(--muted)]">{product.category}</span>
+                      <span className="text-[12px] font-medium text-[var(--body)]">{product.category}</span>
                       <Badge variant="default">{product.status}</Badge>
                     </div>
                   }
                   description={product.summary}
                 >
-                  <div className="border-t border-[var(--hairline)] pt-3 text-xs text-[var(--muted)]">
+                  <div className="border-t border-[var(--hairline)] pt-3 text-xs text-[var(--body)]">
                     <div className="flex items-center gap-2 text-[var(--ink)]">
-                      <Icon className="h-4 w-4 shrink-0 text-[var(--muted)]" />
-                      <span className="font-medium">{product.audience}</span>
+                      <Icon className="h-4 w-4 shrink-0 text-[var(--body)]" />
+                      <span className="font-medium text-[var(--ink)]">{product.audience}</span>
                     </div>
                   </div>
                   <div className="pt-2">

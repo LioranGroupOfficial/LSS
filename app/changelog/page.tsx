@@ -42,7 +42,7 @@ export default function ChangelogPage() {
                       {entry.date}
                     </span>
                     <Badge variant="default">{entry.version}</Badge>
-                    <span className="text-xs text-[var(--muted)]">{entry.product}</span>
+                    <span className="text-xs text-[var(--body)]">{entry.product}</span>
                   </div>
                 }
               >
