@@ -433,7 +433,7 @@ export function BrandLogo({
   return (
     <span
       className={`${containerClass} ${className}`.trim()}
-      style={{ width: `${size}px`, height: `${size}px`, padding: "5px" }}
+      style={{ width: `${size}px`, height: `${size}px`, padding: "1px" }}
     >
       <Image
         src="/logo/dark.png"
