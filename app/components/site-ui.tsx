@@ -436,7 +436,7 @@ export function BrandLogo({
       style={{ width: `${size}px`, height: `${size}px`, padding: "1px" }}
     >
       <Image
-        src="/logo/dark.png"
+        src="/logo/light.png"
         alt="Lioran Developer Solutions"
         width={size}
         height={size}
@@ -444,7 +444,7 @@ export function BrandLogo({
         priority
       />
       <Image
-        src="/logo/light.png"
+        src="/logo/dark.png"
         alt="Lioran Developer Solutions"
         width={size}
         height={size}
