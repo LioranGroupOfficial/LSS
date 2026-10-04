@@ -83,28 +83,28 @@ export default function BrandPage() {
                 <div className="flex flex-col items-center justify-center rounded-[8px] border border-[#dcdee0] bg-[#ffffff] p-6 text-center">
                   <div className="relative h-16 w-16">
                     <Image
-                      src="/logo/light.png"
-                      alt="LDS Light Logo"
+                      src="/logo/dark.png"
+                      alt="LDS Light Mode Logo"
                       width={64}
                       height={64}
                       className="h-full w-full object-contain"
                     />
                   </div>
                   <span className="mt-3 font-mono text-xs text-[#171717]">Light Mode</span>
-                  <span className="text-[11px] text-[#60646c]">/logo/light.png</span>
+                  <span className="text-[11px] text-[#60646c]">/logo/dark.png</span>
                 </div>
                 <div className="flex flex-col items-center justify-center rounded-[8px] border border-[#22252c] bg-[#0c0d0e] p-6 text-center">
                   <div className="relative h-16 w-16">
                     <Image
-                      src="/logo/dark.png"
-                      alt="LDS Dark Logo"
+                      src="/logo/light.png"
+                      alt="LDS Dark Mode Logo"
                       width={64}
                       height={64}
                       className="h-full w-full object-contain"
                     />
                   </div>
                   <span className="mt-3 font-mono text-xs text-[#f8fafc]">Dark Mode</span>
-                  <span className="text-[11px] text-[#94a3b8]">/logo/dark.png</span>
+                  <span className="text-[11px] text-[#94a3b8]">/logo/light.png</span>
                 </div>
               </div>
             </InfoCard>

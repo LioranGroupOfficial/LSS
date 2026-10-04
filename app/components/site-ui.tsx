@@ -433,10 +433,10 @@ export function BrandLogo({
   return (
     <span
       className={`${containerClass} ${className}`.trim()}
-      style={{ width: `${size}px`, height: `${size}px` }}
+      style={{ width: `${size}px`, height: `${size}px`, padding: "5px" }}
     >
       <Image
-        src="/logo/light.png"
+        src="/logo/dark.png"
         alt="Lioran Developer Solutions"
         width={size}
         height={size}
@@ -444,7 +444,7 @@ export function BrandLogo({
         priority
       />
       <Image
-        src="/logo/dark.png"
+        src="/logo/light.png"
         alt="Lioran Developer Solutions"
         width={size}
         height={size}
